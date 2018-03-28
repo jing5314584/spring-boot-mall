@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.mall.mybatis.mapper.RsdCircleMapper">
+  <resultMap id="BaseResultMap" type="boot.mall.mybatis.model.RsdCircle">
+    <id column="idx" jdbcType="INTEGER" property="idx" />
+    <result column="circle_name" jdbcType="VARCHAR" property="circleName" />
+    <result column="circle_icon" jdbcType="VARCHAR" property="circleIcon" />
+    <result column="view_order" jdbcType="TINYINT" property="viewOrder" />
+    <result column="is_new" jdbcType="BIT" property="isNew" />
+    <result column="attention_count" jdbcType="INTEGER" property="attentionCount" />
+    <result column="today_talk_count" jdbcType="INTEGER" property="todayTalkCount" />
+    <result column="talk_count_update_date" jdbcType="TIMESTAMP" property="talkCountUpdateDate" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="is_attention" jdbcType="TINYINT" property="isAttention" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    idx, circle_name, circle_icon, view_order, is_new, attention_count, today_talk_count, 
+    talk_count_update_date, is_delete, is_attention
+  </sql>
+  <select id="selectByExample" parameterType="boot.mall.mybatis.model.RsdCircleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from rsd_circle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rsd_circle
+    where idx = #{idx,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rsd_circle
+    where idx = #{idx,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="boot.mall.mybatis.model.RsdCircleExample">
+    delete from rsd_circle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="boot.mall.mybatis.model.RsdCircle">
+    <selectKey keyProperty="idx" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into rsd_circle (circle_name, circle_icon, view_order, 
+      is_new, attention_count, today_talk_count, 
+      talk_count_update_date, is_delete, is_attention
+      )
+    values (#{circleName,jdbcType=VARCHAR}, #{circleIcon,jdbcType=VARCHAR}, #{viewOrder,jdbcType=TINYINT}, 
+      #{isNew,jdbcType=BIT}, #{attentionCount,jdbcType=INTEGER}, #{todayTalkCount,jdbcType=INTEGER}, 
+      #{talkCountUpdateDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=BIT}, #{isAttention,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="boot.mall.mybatis.model.RsdCircle">
+    <selectKey keyProperty="idx" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into rsd_circle
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="circleName != null">
+        circle_name,
+      </if>
+      <if test="circleIcon != null">
+        circle_icon,
+      </if>
+      <if test="viewOrder != null">
+        view_order,
+      </if>
+      <if test="isNew != null">
+        is_new,
+      </if>
+      <if test="attentionCount != null">
+        attention_count,
+      </if>
+      <if test="todayTalkCount != null">
+        today_talk_count,
+      </if>
+      <if test="talkCountUpdateDate != null">
+        talk_count_update_date,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="isAttention != null">
+        is_attention,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="circleName != null">
+        #{circleName,jdbcType=VARCHAR},
+      </if>
+      <if test="circleIcon != null">
+        #{circleIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="viewOrder != null">
+        #{viewOrder,jdbcType=TINYINT},
+      </if>
+      <if test="isNew != null">
+        #{isNew,jdbcType=BIT},
+      </if>
+      <if test="attentionCount != null">
+        #{attentionCount,jdbcType=INTEGER},
+      </if>
+      <if test="todayTalkCount != null">
+        #{todayTalkCount,jdbcType=INTEGER},
+      </if>
+      <if test="talkCountUpdateDate != null">
+        #{talkCountUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="isAttention != null">
+        #{isAttention,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="boot.mall.mybatis.model.RsdCircleExample" resultType="java.lang.Integer">
+    select count(*) from rsd_circle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update rsd_circle
+    <set>
+      <if test="record.idx != null">
+        idx = #{record.idx,jdbcType=INTEGER},
+      </if>
+      <if test="record.circleName != null">
+        circle_name = #{record.circleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.circleIcon != null">
+        circle_icon = #{record.circleIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.viewOrder != null">
+        view_order = #{record.viewOrder,jdbcType=TINYINT},
+      </if>
+      <if test="record.isNew != null">
+        is_new = #{record.isNew,jdbcType=BIT},
+      </if>
+      <if test="record.attentionCount != null">
+        attention_count = #{record.attentionCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.todayTalkCount != null">
+        today_talk_count = #{record.todayTalkCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.talkCountUpdateDate != null">
+        talk_count_update_date = #{record.talkCountUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDelete != null">
+        is_delete = #{record.isDelete,jdbcType=BIT},
+      </if>
+      <if test="record.isAttention != null">
+        is_attention = #{record.isAttention,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update rsd_circle
+    set idx = #{record.idx,jdbcType=INTEGER},
+      circle_name = #{record.circleName,jdbcType=VARCHAR},
+      circle_icon = #{record.circleIcon,jdbcType=VARCHAR},
+      view_order = #{record.viewOrder,jdbcType=TINYINT},
+      is_new = #{record.isNew,jdbcType=BIT},
+      attention_count = #{record.attentionCount,jdbcType=INTEGER},
+      today_talk_count = #{record.todayTalkCount,jdbcType=INTEGER},
+      talk_count_update_date = #{record.talkCountUpdateDate,jdbcType=TIMESTAMP},
+      is_delete = #{record.isDelete,jdbcType=BIT},
+      is_attention = #{record.isAttention,jdbcType=TINYINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="boot.mall.mybatis.model.RsdCircle">
+    update rsd_circle
+    <set>
+      <if test="circleName != null">
+        circle_name = #{circleName,jdbcType=VARCHAR},
+      </if>
+      <if test="circleIcon != null">
+        circle_icon = #{circleIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="viewOrder != null">
+        view_order = #{viewOrder,jdbcType=TINYINT},
+      </if>
+      <if test="isNew != null">
+        is_new = #{isNew,jdbcType=BIT},
+      </if>
+      <if test="attentionCount != null">
+        attention_count = #{attentionCount,jdbcType=INTEGER},
+      </if>
+      <if test="todayTalkCount != null">
+        today_talk_count = #{todayTalkCount,jdbcType=INTEGER},
+      </if>
+      <if test="talkCountUpdateDate != null">
+        talk_count_update_date = #{talkCountUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="isAttention != null">
+        is_attention = #{isAttention,jdbcType=TINYINT},
+      </if>
+    </set>
+    where idx = #{idx,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="boot.mall.mybatis.model.RsdCircle">
+    update rsd_circle
+    set circle_name = #{circleName,jdbcType=VARCHAR},
+      circle_icon = #{circleIcon,jdbcType=VARCHAR},
+      view_order = #{viewOrder,jdbcType=TINYINT},
+      is_new = #{isNew,jdbcType=BIT},
+      attention_count = #{attentionCount,jdbcType=INTEGER},
+      today_talk_count = #{todayTalkCount,jdbcType=INTEGER},
+      talk_count_update_date = #{talkCountUpdateDate,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=BIT},
+      is_attention = #{isAttention,jdbcType=TINYINT}
+    where idx = #{idx,jdbcType=INTEGER}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="boot.mall.mybatis.model.RsdCircleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from rsd_circle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>
