@@ -11,6 +11,7 @@
 		<property name="beginningDelimiter" value="`" />
 		<property name="endingDelimiter" value="`" />
 		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
@@ -33,14 +34,23 @@
 		</javaClientGenerator>
 		
 		
-		
+<!--  =============================table=================================================================================================================== -->		
 
-
-		<table tableName="rsd_circle" enableCountByExample="true" enableUpdateByExample="true" 
+		<table tableName="rsd_user_token" domainObjectName="UserToken" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<!--  <table tableName="rsd_circle" enableCountByExample="true" enableUpdateByExample="true" 
 			enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"> 
 			<property name="useActualColumnNames" value="false" /><generatedKey 
-			column="idx" sqlStatement="Mysql" identity="true" /> </table>
+			column="idx" sqlStatement="Mysql" identity="true" /> </table> 
 		
+		<table tableName="user" enableCountByExample="true" enableUpdateByExample="true" 
+			enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"> 
+			</table> -->
+			
+		<!-- <table tableName="rsd_product" domainObjectName="Product" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"></table> -->
 		
 	</context>
 </generatorConfiguration>

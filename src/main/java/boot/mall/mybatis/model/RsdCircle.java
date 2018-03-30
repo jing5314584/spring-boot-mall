@@ -102,4 +102,24 @@ public class RsdCircle {
     public void setIsAttention(Byte isAttention) {
         this.isAttention = isAttention;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", idx=").append(idx);
+        sb.append(", circleName=").append(circleName);
+        sb.append(", circleIcon=").append(circleIcon);
+        sb.append(", viewOrder=").append(viewOrder);
+        sb.append(", isNew=").append(isNew);
+        sb.append(", attentionCount=").append(attentionCount);
+        sb.append(", todayTalkCount=").append(todayTalkCount);
+        sb.append(", talkCountUpdateDate=").append(talkCountUpdateDate);
+        sb.append(", isDelete=").append(isDelete);
+        sb.append(", isAttention=").append(isAttention);
+        sb.append("]");
+        return sb.toString();
+    }
 }
