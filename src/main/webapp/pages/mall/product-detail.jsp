@@ -196,7 +196,7 @@
 							</button>
 						</form>
 						<div class="ps-cart">
-							<a class="ps-cart__toggle" href="#"><span><i>20</i></span><i
+							<a class="ps-cart__toggle" href="${basePath}user-cart"><span><i>20</i></span><i
 								class="ps-icon-shopping-cart"></i></a>
 							<div class="ps-cart__listing">
 								<div class="ps-cart__content">
@@ -255,7 +255,7 @@
 									</p>
 								</div>
 								<div class="ps-cart__footer">
-									<a class="ps-btn" href="cart.html">Check out<i
+									<a class="ps-btn" href="${basePath}user-cart">Check out<i
 										class="ps-icon-arrow-left"></i></a>
 								</div>
 							</div>
@@ -288,214 +288,116 @@
 		</div>
 	</div>
 	<main class="ps-main">
-		<div class="ps-products-wrap pt-80 pb-80">
-			<div class="ps-products" data-mh="product-listing">
-
-				<div class="ps-product-action">
-					<div class="ps-product__filter">
-						<select class="ps-select selectpicker">
-							<option value="1">综合排序</option>
-							<option value="2">销量排序</option>
-							<option value="3">价格 (低->高)</option>
-							<option value="3">价格 (高->低)</option>
-						</select>
-						<!-- <H2>私人医生</H2> -->
-					</div>
-				</div>
-				<div class="ps-product__columns" id="productlist">
-					<c:forEach items="${v_productSubjectList}" var="v_productSubject"
-						varStatus="status">
-						<div class="ps-product__column">
-							<div class="ps-shoe mb-30">
-								<div class="ps-shoe__thumbnail">
-									<a class="ps-shoe__favorite" href="#"><i
-										class="ps-icon-heart"></i></a>
-									<div class="box">
-										<div>
-											<img src="https://app.qiwang-sh.com${v_productSubject.icon}"
-												alt="">
-										</div>
-									</div>
-									<a class="ps-shoe__overlay" href="${basePath}product-detail?id=${v_productSubject.idx}"></a>
-								</div>
-								<div class="ps-shoe__content">
-									<div class="ps-shoe__detail">
-										<a class="ps-shoe__name" href="#"> ￥
-											${v_productSubject.price}</a>
-										<p class="ps-shoe__categories">
-											<a href="#">${v_productSubject.productName}</a>
-										</p>
-										<!-- <span class="ps-shoe__price"></span> -->
-									</div>
-								</div>
+		
+		<div class="test">
+        <div class="container">
+          <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                </div>
+          </div>
+        </div>
+      </div>
+		<div class="ps-product--detail pt-60">
+        <div class="ps-container">
+          <div class="row">
+            <div class="col-lg-10 col-md-12 col-lg-offset-1">
+              <div class="ps-product__thumbnail">
+                <div class="ps-product__preview">
+                  <div class="ps-product__variants">
+                  	<c:forEach items="${baseInfoList}" var="confImageText">
+							<div class="item">
+								<img src="https://app.qiwang-sh.com${confImageText}" />
 							</div>
-						</div>
-					</c:forEach>
-				</div>
+						</c:forEach>
+                    <!-- <div class="item"><img src="images/shoe-detail/1.jpg" alt=""></div>
+                    <div class="item"><img src="images/shoe-detail/2.jpg" alt=""></div>
+                    <div class="item"><img src="images/shoe-detail/3.jpg" alt=""></div>
+                    <div class="item"><img src="images/shoe-detail/3.jpg" alt=""></div>
+                    <div class="item"><img src="images/shoe-detail/3.jpg" alt=""></div> -->
+                  </div>
+                </div>
+                <div class="ps-product__image">
+                	<c:forEach items="${baseInfoList}" var="confImageText">
 
-
-
-				<div class="ps-product-action">
-					<div class="ps-product__filter">
-						<!-- <select class="ps-select selectpicker">
-                <option value="1">Shortby</option>
-                <option value="2">Name</option>
-                <option value="3">Price (Low to High)</option>
-                <option value="3">Price (High to Low)</option>
-              </select> -->
+							<div class="item"><img class="zoom" src="https://app.qiwang-sh.com${confImageText}" alt="" data-zoom-image="https://app.qiwang-sh.com${confImageText}"></div>
+						</c:forEach>
+                </div>
+              </div>
+              <div class="ps-product__thumbnail--mobile">
+                <div class="ps-product__main-img"><img src="https://app.qiwang-sh.com${product.icon}" alt=""></div>
+                <div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on">
+                <c:forEach items="${baseInfoList}" var="confImageText">
+							<img src="https://app.qiwang-sh.com${confImageText}" alt="">
+						</c:forEach></div>
+              </div>
+              <div class="ps-product__info">
+                <div class="ps-product__rating">
+                  <select class="ps-rating">
+                    <option value="1">1</option>
+                    <option value="1">2</option>
+                    <option value="1">3</option>
+                    <option value="1">4</option>
+                    <option value="2">5</option>
+                  </select><!-- <a href="#">(Read all 8 reviews)</a> -->
+                </div>
+                <h1>${product.productName}</h1>
+                <!-- <p class="ps-product__category"><a href="#"> Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p> -->
+                <h3 class="ps-product__price">${product.price} <del>${product.marketPrice}</del></h3>
+                <!-- <div class="ps-product__block ps-product__quickview">
+                  <h4>QUICK REVIEW</h4>
+                  <p>The Nike Free RN 2017 Men's Running Shoe weighs less than previous versions and features an updated knit material…</p>
+                </div> -->
+                <!-- <div class="ps-product__block ps-product__style">
+                  <h4>CHOOSE YOUR STYLE</h4>
+                  <ul>
+                    <li><a href="product-detail.html"><img src="images/shoe/sidebar/1.jpg" alt=""></a></li>
+                    <li><a href="product-detail.html"><img src="images/shoe/sidebar/2.jpg" alt=""></a></li>
+                    <li><a href="product-detail.html"><img src="images/shoe/sidebar/3.jpg" alt=""></a></li>
+                    <li><a href="product-detail.html"><img src="images/shoe/sidebar/2.jpg" alt=""></a></li>
+                  </ul>
+                </div> -->
+                <div class="ps-product__block ps-product__size">
+                  <h4>购买数量<!-- <a href="#">Size chart</a> --></h4>
+                  <div class="form-group">
+                    <input class="form-control" type="number" value="1">
+                  </div>
+                </div>
+                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="${basePath}user-cart">加入购物车<i class="ps-icon-next"></i></a>
+                  <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="ps-product__content mt-50">
+                <ul class="tab-list" role="tablist">
+                  <li class="active"><a href="#tab_01" aria-controls="tab_01" role="tab" data-toggle="tab">商品详情</a></li>
+                  <li><a href="#tab_02" aria-controls="tab_02" role="tab" data-toggle="tab">规格参数</a></li>
+                  <li><a href="#tab_03" aria-controls="tab_03" role="tab" data-toggle="tab">反馈建议</a></li>
+                </ul>
+              </div>
+              <div class="tab-content mb-60">
+                <div class="tab-pane active" role="tabpanel" id="tab_01">
+                <div class="c_hide">
+						${productDetail.processInfo}</div>
+                </div>
+                <div class="tab-pane" role="tabpanel" id="tab_02">
+                  <div class="c_hide" style="width:100%;margin:0 auto">
+						<%-- <img src="${basePath}image/shopping/canshu.png"> --%>
+						${productDetail.productParameter}
 					</div>
-					<div class="ps-pagination">
-						<!--  <ul class="pagination">
-                <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">...</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-              </ul> -->
-					</div>
-				</div>
-			</div>
-			<div class="ps-sidebar" data-mh="product-listing">
-				<aside class="ps-widget--sidebar ps-widget--category">
-					<div class="ps-widget__header">
-						<h3>分类</h3>
-					</div>
-					<div class="ps-widget__content">
-						<ul class="ps-list--checked" id="type">
-							<c:forEach items="${confProductSubjectList}"
-								var="confProductSubject" varStatus="status">
-								<c:choose>
-									<c:when test="${status.index == 0 }">
-										<li class="current" data-index="${confProductSubject.idx}"><a
-											style="cursor:pointer">${confProductSubject.productSubjectName}</a></li>
-									</c:when>
-									<c:otherwise>
-										<li data-index="${confProductSubject.idx}"><a
-											style="cursor:pointer">${confProductSubject.productSubjectName}</a></li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						</ul>
-					</div>
-				</aside>
-				<aside class="ps-widget--sidebar ps-widget--filter">
-					<div class="ps-widget__header">
-						<h3>价格</h3>
-					</div>
-					<div class="ps-widget__content">
-						<div class="ac-slider" data-default-min="300"
-							data-default-max="2000" data-max="3450" data-step="50"
-							data-unit="￥"></div>
-						<p class="ac-slider__meta">
-							价格:<span class="ac-slider__value ac-slider__min"></span>-<span
-								class="ac-slider__value ac-slider__max"></span>
-						</p>
-						<a class="ac-slider__filter ps-btn" href="#">筛选</a>
-					</div>
-				</aside>
-				<aside class="ps-widget--sidebar ps-widget--category">
-					<div class="ps-widget__header">
-						<h3>品牌</h3>
-					</div>
-					<div class="ps-widget__content">
-						<ul class="ps-list--checked">
-							<li class="current"><a href="product-listing.html">Nike(521)</a></li>
-							<li><a href="product-listing.html">Adidas(76)</a></li>
-							<li><a href="product-listing.html">Baseball(69)</a></li>
-							<li><a href="product-listing.html">Gucci(36)</a></li>
-							<li><a href="product-listing.html">Dior(108)</a></li>
-							<li><a href="product-listing.html">B&G(108)</a></li>
-							<li><a href="product-listing.html">Louis Vuiton(47)</a></li>
-						</ul>
-					</div>
-				</aside>
-				<aside class="ps-widget--sidebar ps-widget--category">
-					<div class="ps-widget__header">
-						<h3>尺寸</h3>
-					</div>
-					<div class="ps-widget__content">
-						<ul class="ps-list--checked">
-							<li class="current"><a href="product-listing.html">Narrow</a></li>
-							<li><a href="product-listing.html">Regular</a></li>
-							<li><a href="product-listing.html">Wide</a></li>
-							<li><a href="product-listing.html">Extra Wide</a></li>
-						</ul>
-					</div>
-				</aside>
-				<div class="ps-sticky desktop">
-					<aside class="ps-widget--sidebar">
-						<div class="ps-widget__header">
-							<h3>大小</h3>
-						</div>
-						<div class="ps-widget__content">
-							<table class="table ps-table--size">
-								<tbody>
-									<tr>
-										<td class="active">3</td>
-										<td>5.5</td>
-										<td>8</td>
-										<td>10.5</td>
-										<td>13</td>
-									</tr>
-									<tr>
-										<td>3.5</td>
-										<td>6</td>
-										<td>8.5</td>
-										<td>11</td>
-										<td>13.5</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>6.5</td>
-										<td>9</td>
-										<td>11.5</td>
-										<td>14</td>
-									</tr>
-									<tr>
-										<td>4.5</td>
-										<td>7</td>
-										<td>9.5</td>
-										<td>12</td>
-										<td>14.5</td>
-									</tr>
-									<tr>
-										<td>5</td>
-										<td>7.5</td>
-										<td>10</td>
-										<td>12.5</td>
-										<td>15</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</aside>
-					<aside class="ps-widget--sidebar">
-						<div class="ps-widget__header">
-							<h3>颜色</h3>
-						</div>
-						<div class="ps-widget__content">
-							<ul class="ps-list--color">
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-							</ul>
-						</div>
-					</aside>
-				</div>
-
-			</div>
-		</div>
+                </div>
+                <div class="tab-pane" role="tabpanel" id="tab_03">
+                  <div class="form-group">
+                    <textarea class="form-control" rows="6" placeholder="请输入您的建议与反馈..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <button class="ps-btn" type="button">提交</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 		<div class="ps-subscribe">
 			<div class="ps-container">
@@ -716,7 +618,7 @@ var requestPath = '${basePath}' + "admin/";
 												"<img   src=\"https://app.qiwang-sh.com"+item.icon+"\"\">"+
 											"</div>"+
 										"</div>"+
-										"<a class=\"ps-shoe__overlay\" href=\"${basePath}product-detail?id="+item.idx+"\"></a>"+
+										"<a class=\"ps-shoe__overlay\" href=\"product-detail.html\"></a>"+
 									"</div>"+
 									"<div class=\"ps-shoe__content\">"+
 										"<div class=\"ps-shoe__detail\">"+

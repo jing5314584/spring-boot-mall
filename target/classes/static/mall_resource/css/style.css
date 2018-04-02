@@ -755,11 +755,28 @@ audio,canvas,progress,video {
 	display: inline-block;
 }
 
-audio:not ([controls] ) {
-	display: none;
-	height: 0;
-}
+audio
+:not
+ 
+(
+[
+controls
+]
+ 
+)
+{
+display
+:
+ 
+none
+;
 
+	
+height
+:
+ 
+0;
+}
 progress {
 	vertical-align: baseline;
 }
@@ -833,10 +850,22 @@ img {
 	border-style: none;
 }
 
-svg:not (:root ) {
-	overflow: hidden;
-}
+svg
+:not
+ 
+(
+:root
+ 
+)
+{
+overflow
+:
+ 
+hidden
+;
 
+
+}
 code,kbd,pre,samp {
 	font-family: monospace, monospace;
 	/* 1 */
@@ -1296,7 +1325,6 @@ body {
 	font-size: 14px;
 	line-height: 30px;
 	color: #7d8997;
-	
 }
 
 .ps-list--line a:before {
@@ -1381,8 +1409,8 @@ body {
 }
 
 .ps-list--checked li a:hover:before {
-	background-color: #2AC37D;
-	border-color: #2AC37D;
+	background-color: #8161d1;
+	border-color: #8161d1;
 }
 
 .ps-list--checked li a:hover:after {
@@ -1391,8 +1419,8 @@ body {
 }
 
 .ps-list--checked li.current a:before {
-	background-color: #2AC37D;
-	border-color: #2AC37D;
+	background-color: #8161d1;
+	border-color: #8161d1;
 }
 
 .ps-list--checked li.current a:after {
@@ -1691,10 +1719,10 @@ textarea.form-control {
 	font-family: "Montserrat", sans-serif;
 	font-size: 16px;
 	line-height: 1.4em;
-	color: #5b5b5b;
+	color: #fff;
 	border: none;
 	text-transform: uppercase;
-	background-color: #e4e4e4 !important;
+	background-color: #8161d1 !important;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
@@ -1733,7 +1761,7 @@ textarea.form-control {
 	-moz-box-shadow: none;
 	-ms-box-shadow: none;
 	box-shadow: none;
-	background-color: #2AC37D !important;
+	background-color: #8161d1 !important;
 }
 
 .ps-select .bs-caret {
@@ -2107,13 +2135,13 @@ textarea.form-control {
 	text-transform: uppercase;
 	letter-spacing: .1em;
 	color: #fff;
-	background-color: #2AC37D;
-	line-height: 25px;
+	background-color: #8161d1;
+	line-height: 20px;
 	border: none;
 	-webkit-border-radius: 60px;
 	-moz-border-radius: 60px;
 	-ms-border-radius: 60px;
-	border-radius: 60px;
+	border-radius: 15px;
 	-webkit-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
@@ -2134,20 +2162,19 @@ textarea.form-control {
 	-ms-transform: translate(-50%, -50%);
 	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-	width: calc(100% + 12px);
-	height: calc(100% + 12px);
+	width: calc(100% + 10px);
+	height: calc(100% + 10px);
 	background-color: rgba(0, 0, 0, 0.07);
 	-webkit-border-radius: 60px;
 	-moz-border-radius: 60px;
 	-ms-border-radius: 60px;
-	border-radius: 60px;
+	border-radius: 15px;
 	-webkit-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
 }
 
 .ps-btn:hover,button.ps-btn:hover {
-	background-color: #50CF96;
 	color: #fff;
 }
 
@@ -2214,7 +2241,7 @@ textarea.form-control {
 }
 
 .ps-remove:hover {
-	background-color: #50CF96;
+	background-color: #8161d1;
 }
 
 .ps-remove:hover:before,.ps-remove:hover:after {
@@ -5480,7 +5507,7 @@ keyframes animLoader {to { transform:rotate(360deg);
 	transform: translate(-50%, -50%);
 	height: 30px;
 	width: 100%;
-	background-color: #2AC37D;
+	background-color: #8161d1;
 	z-index: -1;
 	-webkit-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
@@ -6458,7 +6485,7 @@ keyframes animLoader {to { transform:rotate(360deg);
 .ps-cart-listing .ps-cart__actions .ps-cart__total h3 span {
 	float: right;
 	font-size: 24px;
-	color: #8d8d8d;
+	color: #f49f26;
 	vertical-align: middle;
 }
 
@@ -7444,7 +7471,7 @@ keyframes animLoader {to { transform:rotate(360deg);
 	margin-bottom: 15px;
 	font-family: "Archivo Narrow", sans-serif;
 	font-size: 30px;
-	color: #000;
+	color: red;
 }
 
 .ps-product--detail .ps-product__price del {
@@ -8825,4 +8852,36 @@ html .bg--parallax {
 	padding-left: 100px;
 }
 
+.box {
+	display: flex;
+	justify-content: start;
+	width: 243¡£48px;
+	height: 216.19px;
+	flex-wrap: wrap;
+	margin: 20px auto;
+	background-color: #fff;
+}
+
+.box div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 243¡£48px;
+	height: 216.19px;
+	background-color: #fff;
+	margin-bottom: 5px;
+}
+
+box div+div:not (:nth-child(5n) ) {
+	margin-left: 5px;
+}
+
+.c_hide img {
+	margin: 0;
+	width: 100%;
+	text-align: center;
+}
+.cart_price{
+	color:#f49f26;
+}
 /*# sourceMappingURL=style.css.map */

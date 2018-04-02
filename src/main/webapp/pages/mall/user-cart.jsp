@@ -288,214 +288,70 @@
 		</div>
 	</div>
 	<main class="ps-main">
-		<div class="ps-products-wrap pt-80 pb-80">
-			<div class="ps-products" data-mh="product-listing">
-
-				<div class="ps-product-action">
-					<div class="ps-product__filter">
-						<select class="ps-select selectpicker">
-							<option value="1">综合排序</option>
-							<option value="2">销量排序</option>
-							<option value="3">价格 (低->高)</option>
-							<option value="3">价格 (高->低)</option>
-						</select>
-						<!-- <H2>私人医生</H2> -->
-					</div>
-				</div>
-				<div class="ps-product__columns" id="productlist">
-					<c:forEach items="${v_productSubjectList}" var="v_productSubject"
+		
+		<div class="ps-content pt-80 pb-80">
+        <div class="ps-container">
+          <div class="ps-cart-listing">
+            <table class="table ps-cart__table">
+              <thead>
+                <tr>
+                  <th>商品</th>
+                  <th>单价</th>
+                  <th>数量</th>
+                  <th>价格</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              <c:forEach items="${shoppingCartList}" var="shoppingcart"
 						varStatus="status">
-						<div class="ps-product__column">
-							<div class="ps-shoe mb-30">
-								<div class="ps-shoe__thumbnail">
-									<a class="ps-shoe__favorite" href="#"><i
-										class="ps-icon-heart"></i></a>
-									<div class="box">
-										<div>
-											<img src="https://app.qiwang-sh.com${v_productSubject.icon}"
+								<tr>
+									<td>
+										<a class="ps-product__preview" href="product-detail.html">
+											<img class="mr-15" src="https://app.qiwang-sh.com${shoppingcart.showIcon}" width="160px" height="100px"
 												alt="">
+											${shoppingcart.productName }
+										</a>
+									</td>
+									<td><div class="cart_price">¥${shoppingcart.price }</div></td>
+									<td>
+										<div class="form-group--number">
+											<button class="minus">
+												<span>-</span>
+											</button>
+											<input class="form-control" type="text" value="${shoppingcart.productNum }">
+											<button class="plus">
+												<span>+</span>
+											</button>
 										</div>
-									</div>
-									<a class="ps-shoe__overlay" href="${basePath}product-detail?id=${v_productSubject.idx}"></a>
-								</div>
-								<div class="ps-shoe__content">
-									<div class="ps-shoe__detail">
-										<a class="ps-shoe__name" href="#"> ￥
-											${v_productSubject.price}</a>
-										<p class="ps-shoe__categories">
-											<a href="#">${v_productSubject.productName}</a>
-										</p>
-										<!-- <span class="ps-shoe__price"></span> -->
-									</div>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
-				</div>
-
-
-
-				<div class="ps-product-action">
-					<div class="ps-product__filter">
-						<!-- <select class="ps-select selectpicker">
-                <option value="1">Shortby</option>
-                <option value="2">Name</option>
-                <option value="3">Price (Low to High)</option>
-                <option value="3">Price (High to Low)</option>
-              </select> -->
-					</div>
-					<div class="ps-pagination">
-						<!--  <ul class="pagination">
-                <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">...</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-              </ul> -->
-					</div>
-				</div>
-			</div>
-			<div class="ps-sidebar" data-mh="product-listing">
-				<aside class="ps-widget--sidebar ps-widget--category">
-					<div class="ps-widget__header">
-						<h3>分类</h3>
-					</div>
-					<div class="ps-widget__content">
-						<ul class="ps-list--checked" id="type">
-							<c:forEach items="${confProductSubjectList}"
-								var="confProductSubject" varStatus="status">
-								<c:choose>
-									<c:when test="${status.index == 0 }">
-										<li class="current" data-index="${confProductSubject.idx}"><a
-											style="cursor:pointer">${confProductSubject.productSubjectName}</a></li>
-									</c:when>
-									<c:otherwise>
-										<li data-index="${confProductSubject.idx}"><a
-											style="cursor:pointer">${confProductSubject.productSubjectName}</a></li>
-									</c:otherwise>
-								</c:choose>
+									</td>
+									<td><div class="cart_price">¥${shoppingcart.price * shoppingcart.productNum }</div></td>
+									<td>
+										<div class="ps-remove" id="delete" data-productid=${shoppingcart.idx}></div>
+									</td>
+								</tr>
 							</c:forEach>
-						</ul>
-					</div>
-				</aside>
-				<aside class="ps-widget--sidebar ps-widget--filter">
-					<div class="ps-widget__header">
-						<h3>价格</h3>
-					</div>
-					<div class="ps-widget__content">
-						<div class="ac-slider" data-default-min="300"
-							data-default-max="2000" data-max="3450" data-step="50"
-							data-unit="￥"></div>
-						<p class="ac-slider__meta">
-							价格:<span class="ac-slider__value ac-slider__min"></span>-<span
-								class="ac-slider__value ac-slider__max"></span>
-						</p>
-						<a class="ac-slider__filter ps-btn" href="#">筛选</a>
-					</div>
-				</aside>
-				<aside class="ps-widget--sidebar ps-widget--category">
-					<div class="ps-widget__header">
-						<h3>品牌</h3>
-					</div>
-					<div class="ps-widget__content">
-						<ul class="ps-list--checked">
-							<li class="current"><a href="product-listing.html">Nike(521)</a></li>
-							<li><a href="product-listing.html">Adidas(76)</a></li>
-							<li><a href="product-listing.html">Baseball(69)</a></li>
-							<li><a href="product-listing.html">Gucci(36)</a></li>
-							<li><a href="product-listing.html">Dior(108)</a></li>
-							<li><a href="product-listing.html">B&G(108)</a></li>
-							<li><a href="product-listing.html">Louis Vuiton(47)</a></li>
-						</ul>
-					</div>
-				</aside>
-				<aside class="ps-widget--sidebar ps-widget--category">
-					<div class="ps-widget__header">
-						<h3>尺寸</h3>
-					</div>
-					<div class="ps-widget__content">
-						<ul class="ps-list--checked">
-							<li class="current"><a href="product-listing.html">Narrow</a></li>
-							<li><a href="product-listing.html">Regular</a></li>
-							<li><a href="product-listing.html">Wide</a></li>
-							<li><a href="product-listing.html">Extra Wide</a></li>
-						</ul>
-					</div>
-				</aside>
-				<div class="ps-sticky desktop">
-					<aside class="ps-widget--sidebar">
-						<div class="ps-widget__header">
-							<h3>大小</h3>
-						</div>
-						<div class="ps-widget__content">
-							<table class="table ps-table--size">
-								<tbody>
-									<tr>
-										<td class="active">3</td>
-										<td>5.5</td>
-										<td>8</td>
-										<td>10.5</td>
-										<td>13</td>
-									</tr>
-									<tr>
-										<td>3.5</td>
-										<td>6</td>
-										<td>8.5</td>
-										<td>11</td>
-										<td>13.5</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>6.5</td>
-										<td>9</td>
-										<td>11.5</td>
-										<td>14</td>
-									</tr>
-									<tr>
-										<td>4.5</td>
-										<td>7</td>
-										<td>9.5</td>
-										<td>12</td>
-										<td>14.5</td>
-									</tr>
-									<tr>
-										<td>5</td>
-										<td>7.5</td>
-										<td>10</td>
-										<td>12.5</td>
-										<td>15</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</aside>
-					<aside class="ps-widget--sidebar">
-						<div class="ps-widget__header">
-							<h3>颜色</h3>
-						</div>
-						<div class="ps-widget__content">
-							<ul class="ps-list--color">
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-							</ul>
-						</div>
-					</aside>
-				</div>
-
-			</div>
-		</div>
+              
+              </tbody>
+            </table>
+            <div class="ps-cart__actions">
+              <div class="ps-cart__promotion">
+                <!-- <div class="form-group">
+                  <div class="ps-form--icon"><i class="fa fa-angle-right"></i>
+                    <input class="form-control" type="text" placeholder="Promo Code">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="ps-btn ps-btn--gray">Continue Shopping</button>
+                </div> -->
+              </div>
+              <div class="ps-cart__total">
+                <h3>总价: <span> ¥2599.00 </span></h3><a class="ps-btn" href="checkout.html">结算<i class="ps-icon-next"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 		<div class="ps-subscribe">
 			<div class="ps-container">
@@ -680,61 +536,108 @@
 	<!-- Custom scripts-->
 	<script type="text/javascript"
 		src="${basePath}mall_resource/js/main.js"></script>
+	<script type="text/javascript"
+		src="${basePath}layer/layer.js"></script>
 	<script type="text/javascript">
 var basePath = '${basePath}';
 var requestPath = '${basePath}' + "admin/";
-	$("ul#type").on("click", "li", function() {
+	
+		 $('#delete').on('click', function(){
+			 layer.confirm('您是否要从购物车中移除所选的商品？', {
+					btn : [ '确定', '取消' ]
+				//按钮
+				}, function() {
+					 $.ajax({
+						dataType : "json",
+						url : basePath + "deleteShoppingCartProduct",
+						type : "post",
+						data : {
+							"productIdx" : $('#delete').data("productid")
+						},
+						error : function(data) {
+						},
+						success : function(data) {
+							var jsonData = data;
+							if (jsonData.result_code == 0) {
+								layer.alert('删除成功！', {icon: 1});
 
-		$("ul#type").each(function() {
-			var y = $(this).children();
-				y.removeClass("current");
-		});
-		$(this).addClass("current");
-		var index = $(this).data('index');
+							} else {
+								layer.alert('删除失败！', {icon: 2});
+							}
+
+						}
+					});  
+				}, function() {
+					//取消
+				});
+			  });
 		
-		$(".ps-product__column").remove();
-		$.ajax({
-			dataType : "json",
-			url : basePath + "getProductbySubject",
-			type : "post",
-			data : {
-				"subjectIdx": index
-			},
-			error : function(data) {
-				alert("加载商品信息失败");
-			},
-			success : function(data) {
-				/*width=\"243。48px\" height=\"216.19px\"  */
-				 $.each(data.v_productSubjectList, function(i, item) {
-						$("#productlist").append(
-								"<div class=\"ps-product__column\">"+
-								"<div class=\"ps-shoe mb-30\">"+
-									"<div class=\"ps-shoe__thumbnail\">"+
-										"<a class=\"ps-shoe__favorite\" href=\"#\"><i class=\"ps-icon-heart\"></i></a> "+
-										"<div class=\"box\">"+
-											"<div>"+
-												"<img   src=\"https://app.qiwang-sh.com"+item.icon+"\"\">"+
-											"</div>"+
-										"</div>"+
-										"<a class=\"ps-shoe__overlay\" href=\"${basePath}product-detail?id="+item.idx+"\"></a>"+
-									"</div>"+
-									"<div class=\"ps-shoe__content\">"+
-										"<div class=\"ps-shoe__detail\">"+
-											"<a class=\"ps-shoe__name\"> ￥"+item.price+"</a>"+
-											"<p class=\"ps-shoe__categories\">"+
-												"<a>"+item.productName+"</a>"+
-											"</p>"+
-											
-										"</div>"+
-									"</div>"+
-								"</div>"+
-							"</div>"
-							); 						
-				 }); 
-			}
-		});
-	});
-</script>
+		$("ul#type")
+				.on(
+						"click",
+						"li",
+						function() {
+
+							$("ul#type").each(function() {
+								var y = $(this).children();
+								y.removeClass("current");
+							});
+							$(this).addClass("current");
+							var index = $(this).data('index');
+
+							$(".ps-product__column").remove();
+							$
+									.ajax({
+										dataType : "json",
+										url : basePath + "getProductbySubject",
+										type : "post",
+										data : {
+											"subjectIdx" : index
+										},
+										error : function(data) {
+											alert("加载商品信息失败");
+										},
+										success : function(data) {
+											/*width=\"243。48px\" height=\"216.19px\"  */
+											$
+													.each(
+															data.v_productSubjectList,
+															function(i, item) {
+																$(
+																		"#productlist")
+																		.append(
+																				"<div class=\"ps-product__column\">"
+																						+ "<div class=\"ps-shoe mb-30\">"
+																						+ "<div class=\"ps-shoe__thumbnail\">"
+																						+ "<a class=\"ps-shoe__favorite\" href=\"#\"><i class=\"ps-icon-heart\"></i></a> "
+																						+ "<div class=\"box\">"
+																						+ "<div>"
+																						+ "<img   src=\"https://app.qiwang-sh.com"+item.icon+"\"\">"
+																						+ "</div>"
+																						+ "</div>"
+																						+ "<a class=\"ps-shoe__overlay\" href=\"product-detail.html\"></a>"
+																						+ "</div>"
+																						+ "<div class=\"ps-shoe__content\">"
+																						+ "<div class=\"ps-shoe__detail\">"
+																						+ "<a class=\"ps-shoe__name\"> ￥"
+																						+ item.price
+																						+ "</a>"
+																						+ "<p class=\"ps-shoe__categories\">"
+																						+ "<a>"
+																						+ item.productName
+																						+ "</a>"
+																						+ "</p>"
+																						+
+
+																						"</div>"
+																						+ "</div>"
+																						+ "</div>"
+																						+ "</div>");
+															});
+										}
+									});
+						});
+	</script>
 </body>
 </body>
 </html>
