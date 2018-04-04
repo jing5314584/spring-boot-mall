@@ -941,6 +941,136 @@ public class UserExample {
             addCriterion("address not between", value1, value2, "address");
             return (Criteria) this;
         }
+
+        public Criteria andRegisterDateIsNull() {
+            addCriterion("register_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateIsNotNull() {
+            addCriterion("register_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateEqualTo(Date value) {
+            addCriterion("register_date =", value, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateNotEqualTo(Date value) {
+            addCriterion("register_date <>", value, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateGreaterThan(Date value) {
+            addCriterion("register_date >", value, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("register_date >=", value, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateLessThan(Date value) {
+            addCriterion("register_date <", value, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateLessThanOrEqualTo(Date value) {
+            addCriterion("register_date <=", value, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateIn(List<Date> values) {
+            addCriterion("register_date in", values, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateNotIn(List<Date> values) {
+            addCriterion("register_date not in", values, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateBetween(Date value1, Date value2) {
+            addCriterion("register_date between", value1, value2, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegisterDateNotBetween(Date value1, Date value2) {
+            addCriterion("register_date not between", value1, value2, "registerDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathIsNull() {
+            addCriterion("portrait_path is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathIsNotNull() {
+            addCriterion("portrait_path is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathEqualTo(String value) {
+            addCriterion("portrait_path =", value, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathNotEqualTo(String value) {
+            addCriterion("portrait_path <>", value, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathGreaterThan(String value) {
+            addCriterion("portrait_path >", value, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathGreaterThanOrEqualTo(String value) {
+            addCriterion("portrait_path >=", value, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathLessThan(String value) {
+            addCriterion("portrait_path <", value, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathLessThanOrEqualTo(String value) {
+            addCriterion("portrait_path <=", value, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathLike(String value) {
+            addCriterion("portrait_path like", value, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathNotLike(String value) {
+            addCriterion("portrait_path not like", value, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathIn(List<String> values) {
+            addCriterion("portrait_path in", values, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathNotIn(List<String> values) {
+            addCriterion("portrait_path not in", values, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathBetween(String value1, String value2) {
+            addCriterion("portrait_path between", value1, value2, "portraitPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortraitPathNotBetween(String value1, String value2) {
+            addCriterion("portrait_path not between", value1, value2, "portraitPath");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

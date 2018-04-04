@@ -89,5 +89,12 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/lib/alipay-sdk-java20170324180803.jar</systemPath>
 		</dependency>
+		<dependency>
+			<groupId>com.REST</groupId>
+			<artifactId>pay</artifactId>
+			<version>3.0.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/lib/CCP_REST_SDK_JAVA_v2.7r.jar</systemPath>
+		</dependency>
 	</dependencies>
 </project>

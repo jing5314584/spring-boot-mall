@@ -27,6 +27,10 @@ public class User {
 
     private String address;
 
+    private Date registerDate;
+
+    private String portraitPath;
+
     public Integer getIdx() {
         return idx;
     }
@@ -123,6 +127,22 @@ public class User {
         this.address = address == null ? null : address.trim();
     }
 
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public String getPortraitPath() {
+        return portraitPath;
+    }
+
+    public void setPortraitPath(String portraitPath) {
+        this.portraitPath = portraitPath == null ? null : portraitPath.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -141,6 +161,8 @@ public class User {
         sb.append(", city=").append(city);
         sb.append(", country=").append(country);
         sb.append(", address=").append(address);
+        sb.append(", registerDate=").append(registerDate);
+        sb.append(", portraitPath=").append(portraitPath);
         sb.append("]");
         return sb.toString();
     }

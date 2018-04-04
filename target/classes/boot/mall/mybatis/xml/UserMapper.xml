@@ -14,6 +14,8 @@
     <result column="city" jdbcType="VARCHAR" property="city" />
     <result column="country" jdbcType="VARCHAR" property="country" />
     <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="register_date" jdbcType="TIMESTAMP" property="registerDate" />
+    <result column="portrait_path" jdbcType="VARCHAR" property="portraitPath" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List">
     idx, user_name, nick_name, phone, pass_word, email, sex, birthday, province, city, 
-    country, address
+    country, address, register_date, portrait_path
   </sql>
   <select id="selectByExample" parameterType="boot.mall.mybatis.model.UserExample" resultMap="BaseResultMap">
     select
@@ -112,13 +114,13 @@
     insert into user (idx, user_name, nick_name, 
       phone, pass_word, email, 
       sex, birthday, province, 
-      city, country, address
-      )
+      city, country, address, 
+      register_date, portrait_path)
     values (#{idx,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{sex,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{province,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}
-      )
+      #{city,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{registerDate,jdbcType=TIMESTAMP}, #{portraitPath,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="boot.mall.mybatis.model.User">
     insert into user
@@ -159,6 +161,12 @@
       <if test="address != null">
         address,
       </if>
+      <if test="registerDate != null">
+        register_date,
+      </if>
+      <if test="portraitPath != null">
+        portrait_path,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="idx != null">
@@ -196,6 +204,12 @@
       </if>
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registerDate != null">
+        #{registerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="portraitPath != null">
+        #{portraitPath,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -244,6 +258,12 @@
       <if test="record.address != null">
         address = #{record.address,jdbcType=VARCHAR},
       </if>
+      <if test="record.registerDate != null">
+        register_date = #{record.registerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.portraitPath != null">
+        portrait_path = #{record.portraitPath,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -262,7 +282,9 @@
       province = #{record.province,jdbcType=VARCHAR},
       city = #{record.city,jdbcType=VARCHAR},
       country = #{record.country,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR}
+      address = #{record.address,jdbcType=VARCHAR},
+      register_date = #{record.registerDate,jdbcType=TIMESTAMP},
+      portrait_path = #{record.portraitPath,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -303,6 +325,12 @@
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
       </if>
+      <if test="registerDate != null">
+        register_date = #{registerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="portraitPath != null">
+        portrait_path = #{portraitPath,jdbcType=VARCHAR},
+      </if>
     </set>
     where idx = #{idx,jdbcType=INTEGER}
   </update>
@@ -318,7 +346,9 @@
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
       country = #{country,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR}
+      address = #{address,jdbcType=VARCHAR},
+      register_date = #{registerDate,jdbcType=TIMESTAMP},
+      portrait_path = #{portraitPath,jdbcType=VARCHAR}
     where idx = #{idx,jdbcType=INTEGER}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="boot.mall.mybatis.model.UserExample" resultMap="BaseResultMap">

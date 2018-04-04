@@ -35,9 +35,15 @@
 		
 		
 <!--  =============================table=================================================================================================================== -->		
-		<table tableName="rsd_v_shopping_cart" domainObjectName="V_ShoppingCart" 
+		
+		<table tableName="rsd_sms_validate" domainObjectName="SmsValidate"
+		 enableCountByExample="true" enableUpdateByExample="true" 
+		 enableDeleteByExample="true" enableSelectByExample="true" 
+		 selectByExampleQueryId="true"> 
+		 </table>
+		<!--<table tableName="rsd_v_shopping_cart" domainObjectName="V_ShoppingCart" 
 			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
-			enableSelectByExample="true" selectByExampleQueryId="true"> </table>
+			enableSelectByExample="true" selectByExampleQueryId="true"> </table> -->
 		<!-- <table tableName="rsd_shopping_cart" domainObjectName="ShoppingCart" 
 			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
 			enableSelectByExample="true" selectByExampleQueryId="true"> </table> -->
@@ -56,11 +62,11 @@
 		<!--  <table tableName="rsd_circle" enableCountByExample="true" enableUpdateByExample="true" 
 			enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"> 
 			<property name="useActualColumnNames" value="false" /><generatedKey 
-			column="idx" sqlStatement="Mysql" identity="true" /> </table> 
+			column="idx" sqlStatement="Mysql" identity="true" /> </table>  -->
 		
 		<table tableName="user" enableCountByExample="true" enableUpdateByExample="true" 
 			enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"> 
-			</table> -->
+			</table> 
 			
 		<!-- <table tableName="rsd_product" domainObjectName="Product" 
 			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 

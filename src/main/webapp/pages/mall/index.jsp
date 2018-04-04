@@ -15,13 +15,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link href="${basePath}mall_resource/apple-touch-icon.png"
-	rel="apple-touch-icon">
+<link href="${basePath}mall_resource/images/favicon.png"
+	rel="shortcut icon">
 <link href="favicon.png" rel="icon">
 <meta name="author" content="Nghia Minh Luong">
 <meta name="keywords" content="Default Description">
 <meta name="description" content="Default keyword">
-<title>Shoe - Homepage</title>
+<title>一乎百医</title>
 <!-- Fonts-->
 <link
 	href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900"
@@ -53,6 +53,8 @@
 	href="${basePath}mall_resource/plugins/revolution/css/navigation.css">
 <!-- Custom-->
 <link rel="stylesheet" href="${basePath}mall_resource/css/style.css">
+<link rel="stylesheet" href="${basePath}mall_resource/css/index.css">
+<link rel="stylesheet" href="${basePath}mall_resource/css/login.css">
 <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
 <!--WARNING: Respond.js doesn't work if you view the page via file://-->
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
@@ -73,12 +75,19 @@
 					<div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
 					
 						<div class="header__actions">
-						<a href="${basePath}login"><img
-											src="${basePath}mall_resource/images/flag/log-in.svg" alt="" width="20px" height="20px">
+						<% if(session.getAttribute("userIdx") != null && !session.getAttribute("userIdx").toString().equals("0")){%>
+						<div class="btn-group ps-dropdown">
+						<a class="dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer" ><i class="fa fa-user-o fa-2x color_8161d1 mg_t10 mg_r10"></i>
+											<%=session.getAttribute("userName")%></a>
+											<ul class="dropdown-menu">
+									<li id="sigin-out"><a style="cursor:pointer"  ><i class="fa fa-sign-out fa-2x color_8161d1"></i>
+											退出</a></li>
+								</ul>
+								</div>
+						<%}else{ %>
+						<a style="cursor:pointer" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in fa-2x color_8161d1 mg_t10 mg_r10"></i>
 											登陆</a>
-							<a href="${basePath}register"><img
-											src="${basePath}mall_resource/images/flag/register.svg" width="20px" height="20px"
-											alt=""> 注册</a>				
+						<%} %>			
 							<%-- <div class="btn-group ps-dropdown">
 								<a class="dropdown-toggle" href="#" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false">个人中心<i
@@ -110,105 +119,25 @@
 				</div>
 				<div class="navigation__column center">
 					<ul class="main-menu menu">
-						<li class="menu-item menu-item-has-children dropdown"><a
-							href="index.html">首页</a>
-							<ul class="sub-menu">
-								<li class="menu-item"><a href="index.html">Homepage #1</a></li>
-								<li class="menu-item"><a href="#">Homepage #2</a></li>
-								<li class="menu-item"><a href="#">Homepage #3</a></li>
-							</ul></li>
-						<li class="menu-item menu-item-has-children has-mega-menu"><a
-							href="#">一乎百医APP</a>
-							<div class="mega-menu">
-								<div class="mega-wrap">
-									<div class="mega-column">
-										<ul class="mega-item mega-features">
-											<li><a href="product-listing.html">NEW RELEASES</a></li>
-											<li><a href="product-listing.html">FEATURES SHOES</a></li>
-											<li><a href="product-listing.html">BEST SELLERS</a></li>
-											<li><a href="product-listing.html">NOW TRENDING</a></li>
-											<li><a href="product-listing.html">SUMMER ESSENTIALS</a></li>
-											<li><a href="product-listing.html">MOTHER'S DAY
-													COLLECTION</a></li>
-											<li><a href="product-listing.html">FAN GEAR</a></li>
-										</ul>
-									</div>
-									<div class="mega-column">
-										<h4 class="mega-heading">Shoes</h4>
-										<ul class="mega-item">
-											<li><a href="product-listing.html">All Shoes</a></li>
-											<li><a href="product-listing.html">Running</a></li>
-											<li><a href="product-listing.html">Training & Gym</a></li>
-											<li><a href="product-listing.html">Basketball</a></li>
-											<li><a href="product-listing.html">Football</a></li>
-											<li><a href="product-listing.html">Soccer</a></li>
-											<li><a href="product-listing.html">Baseball</a></li>
-										</ul>
-									</div>
-									<div class="mega-column">
-										<h4 class="mega-heading">CLOTHING</h4>
-										<ul class="mega-item">
-											<li><a href="product-listing.html">Compression &
-													Nike Pro</a></li>
-											<li><a href="product-listing.html">Tops & T-Shirts</a></li>
-											<li><a href="product-listing.html">Polos</a></li>
-											<li><a href="product-listing.html">Hoodies &
-													Sweatshirts</a></li>
-											<li><a href="product-listing.html">Jackets & Vests</a></li>
-											<li><a href="product-listing.html">Pants & Tights</a></li>
-											<li><a href="product-listing.html">Shorts</a></li>
-										</ul>
-									</div>
-									<div class="mega-column">
-										<h4 class="mega-heading">Accessories</h4>
-										<ul class="mega-item">
-											<li><a href="product-listing.html">Compression &
-													Nike Pro</a></li>
-											<li><a href="product-listing.html">Tops & T-Shirts</a></li>
-											<li><a href="product-listing.html">Polos</a></li>
-											<li><a href="product-listing.html">Hoodies &
-													Sweatshirts</a></li>
-											<li><a href="product-listing.html">Jackets & Vests</a></li>
-											<li><a href="product-listing.html">Pants & Tights</a></li>
-											<li><a href="product-listing.html">Shorts</a></li>
-										</ul>
-									</div>
-									<div class="mega-column">
-										<h4 class="mega-heading">BRAND</h4>
-										<ul class="mega-item">
-											<li><a href="product-listing.html">NIKE</a></li>
-											<li><a href="product-listing.html">Adidas</a></li>
-											<li><a href="product-listing.html">Dior</a></li>
-											<li><a href="product-listing.html">B&G</a></li>
-										</ul>
-									</div>
-								</div>
-							</div></li>
-						<li class="menu-item"><a href="#">私人医生</a></li>
-						<li class="menu-item"><a href="${basePath}healthMall">健康商城</a></li>
-						<li class="menu-item menu-item-has-children dropdown"><a
-							href="#">新闻动态</a>
-							<ul class="sub-menu">
-								<li class="menu-item menu-item-has-children dropdown"><a
-									href="blog-grid.html">Blog-grid</a>
-									<ul class="sub-menu">
-										<li class="menu-item"><a href="blog-grid.html">Blog
-												Grid 1</a></li>
-										<li class="menu-item"><a href="blog-grid-2.html">Blog
-												Grid 2</a></li>
-									</ul></li>
-								<li class="menu-item"><a href="blog-list.html">Blog
-										List</a></li>
-							</ul></li>
-						<li class="menu-item menu-item-has-children dropdown"><a
-							href="#">联系我们</a>
-							<ul class="sub-menu">
-								<li class="menu-item"><a href="contact-us.html">Contact
-										Us #1</a></li>
-								<li class="menu-item"><a href="contact-us.html">Contact
-										Us #2</a></li>
-							</ul></li>
-					</ul>
+							<li class="menu-item">
+								<a href="index.html">首页</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">一乎百医APP</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">私人医生</a>
+							</li>
+							<li class="menu-item">
+								<a href="${basePath}healthMall">健康商城</a>
+							</li>
+							<li class="menu-item ">
+								<a href="#">新闻动态</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">联系我们</a>
+							</li>
+						</ul>
 				</div>
 				
 				<div class="navigation__column right">
@@ -1367,6 +1296,36 @@
 			</div>
 		</div>
 	</main>
+	<div id="loginModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="form-horizontal">
+                <span class="heading">用户登录</span>
+                <div class="form-group">
+                    <input class="form-control" id="phoNum" placeholder="手机号" value="15316028637">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group help">
+                    <input  class="form-control" id="code" placeholder="验证码" value="4545">
+                    <i class="fa fa-lock"></i>
+                    <button class="fa-btn-code" id="yzm">获取验证码</button>
+                     <!-- 
+                    <a href="#" class="fa fa-question-circle"></a> -->
+                </div>
+                <div class="form-group2 mg_t20">
+                    <button  class="sub" id="login">登录</button>
+                    <button  class="cancel" id="cancel">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+</div>
 	<!-- JS Library-->
 	<script type="text/javascript"
 		src="${basePath}mall_resource/plugins/jquery/dist/jquery.min.js"></script>
@@ -1415,5 +1374,11 @@
 	<!-- Custom scripts-->
 	<script type="text/javascript"
 		src="${basePath}mall_resource/js/main.js"></script>
+	<script type="text/javascript" src="${basePath}layer/layer.js"></script>
+	<script type="text/javascript">
+	var basePath = '${basePath}';
+		
+	</script>
+	<script type="text/javascript" src="${basePath}mall_resource/js/login.js"></script>
 </body>
 </html>

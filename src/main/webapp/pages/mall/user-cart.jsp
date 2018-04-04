@@ -16,13 +16,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link href="${basePath}mall_resource/apple-touch-icon.png"
-	rel="apple-touch-icon">
+<link href="${basePath}mall_resource/images/favicon.png"
+	rel="shortcut icon">
 <link href="favicon.png" rel="icon">
 <meta name="author" content="Nghia Minh Luong">
 <meta name="keywords" content="Default Description">
 <meta name="description" content="Default keyword">
-<title>Shoe - Homepage</title>
+<title>一乎百医 - 购物车</title>
 <!-- Fonts-->
 <!-- Fonts-->
 
@@ -53,6 +53,7 @@
 	href="${basePath}mall_resource/plugins/revolution/css/navigation.css">
 <!-- Custom-->
 <link rel="stylesheet" href="${basePath}mall_resource/css/style.css">
+<link rel="stylesheet" href="${basePath}mall_resource/css/login.css">
 <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
 <!--WARNING: Respond.js doesn't work if you view the page via file://-->
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
@@ -72,9 +73,19 @@
 					</div>
 					<div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
 						<div class="header__actions">
-							<a href="${basePath}register"><img
-								src="${basePath}mall_resource/images/flag/register.svg"
-								width="25px" height="25px" alt=""> 注册</a>
+						<% if(session.getAttribute("userIdx") != null && !session.getAttribute("userIdx").toString().equals("0")){%>
+						<div class="btn-group ps-dropdown">
+						<a class="dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer" ><i class="fa fa-user-o fa-2x color_8161d1 mg_t10 mg_r10"></i>
+											<%=session.getAttribute("userName")%></a>
+											<ul class="dropdown-menu">
+									<li id="sigin-out"><a style="cursor:pointer"  ><i class="fa fa-sign-out fa-2x color_8161d1"></i>
+											退出</a></li>
+								</ul>
+								</div>
+						<%}else{ %>
+						<a style="cursor:pointer" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in fa-2x color_8161d1 mg_t10 mg_r10"></i>
+											登陆</a>
+						<%} %>
 						</div>
 					</div>
 				</div>
@@ -91,100 +102,24 @@
 					</div>
 					<div class="navigation__column center">
 						<ul class="main-menu menu">
-							<li class="menu-item"><a
-								href="index.html">首页</a></li>
-							<li class="menu-item menu-item-has-children has-mega-menu"><a
-								href="#">一乎百医APP</a>
-								<div class="mega-menu">
-									<div class="mega-wrap">
-										<div class="mega-column">
-											<ul class="mega-item mega-features">
-												<li><a href="product-listing.html">NEW RELEASES</a></li>
-												<li><a href="product-listing.html">FEATURES SHOES</a></li>
-												<li><a href="product-listing.html">BEST SELLERS</a></li>
-												<li><a href="product-listing.html">NOW TRENDING</a></li>
-												<li><a href="product-listing.html">SUMMER
-														ESSENTIALS</a></li>
-												<li><a href="product-listing.html">MOTHER'S DAY
-														COLLECTION</a></li>
-												<li><a href="product-listing.html">FAN GEAR</a></li>
-											</ul>
-										</div>
-										<div class="mega-column">
-											<h4 class="mega-heading">Shoes</h4>
-											<ul class="mega-item">
-												<li><a href="product-listing.html">All Shoes</a></li>
-												<li><a href="product-listing.html">Running</a></li>
-												<li><a href="product-listing.html">Training & Gym</a></li>
-												<li><a href="product-listing.html">Basketball</a></li>
-												<li><a href="product-listing.html">Football</a></li>
-												<li><a href="product-listing.html">Soccer</a></li>
-												<li><a href="product-listing.html">Baseball</a></li>
-											</ul>
-										</div>
-										<div class="mega-column">
-											<h4 class="mega-heading">CLOTHING</h4>
-											<ul class="mega-item">
-												<li><a href="product-listing.html">Compression &
-														Nike Pro</a></li>
-												<li><a href="product-listing.html">Tops & T-Shirts</a></li>
-												<li><a href="product-listing.html">Polos</a></li>
-												<li><a href="product-listing.html">Hoodies &
-														Sweatshirts</a></li>
-												<li><a href="product-listing.html">Jackets & Vests</a></li>
-												<li><a href="product-listing.html">Pants & Tights</a></li>
-												<li><a href="product-listing.html">Shorts</a></li>
-											</ul>
-										</div>
-										<div class="mega-column">
-											<h4 class="mega-heading">Accessories</h4>
-											<ul class="mega-item">
-												<li><a href="product-listing.html">Compression &
-														Nike Pro</a></li>
-												<li><a href="product-listing.html">Tops & T-Shirts</a></li>
-												<li><a href="product-listing.html">Polos</a></li>
-												<li><a href="product-listing.html">Hoodies &
-														Sweatshirts</a></li>
-												<li><a href="product-listing.html">Jackets & Vests</a></li>
-												<li><a href="product-listing.html">Pants & Tights</a></li>
-												<li><a href="product-listing.html">Shorts</a></li>
-											</ul>
-										</div>
-										<div class="mega-column">
-											<h4 class="mega-heading">BRAND</h4>
-											<ul class="mega-item">
-												<li><a href="product-listing.html">NIKE</a></li>
-												<li><a href="product-listing.html">Adidas</a></li>
-												<li><a href="product-listing.html">Dior</a></li>
-												<li><a href="product-listing.html">B&G</a></li>
-											</ul>
-										</div>
-									</div>
-								</div></li>
-							<li class="menu-item"><a href="#">私人医生</a></li>
-							<li class="menu-item"><a href="${basePath}healthMall">健康商城</a></li>
-							<li class="menu-item menu-item-has-children dropdown"><a
-								href="#">新闻动态</a>
-								<ul class="sub-menu">
-									<li class="menu-item menu-item-has-children dropdown"><a
-										href="blog-grid.html">Blog-grid</a>
-										<ul class="sub-menu">
-											<li class="menu-item"><a href="blog-grid.html">Blog
-													Grid 1</a></li>
-											<li class="menu-item"><a href="blog-grid-2.html">Blog
-													Grid 2</a></li>
-										</ul></li>
-									<li class="menu-item"><a href="blog-list.html">Blog
-											List</a></li>
-								</ul></li>
-							<li class="menu-item menu-item-has-children dropdown"><a
-								href="#">联系我们</a>
-								<ul class="sub-menu">
-									<li class="menu-item"><a href="contact-us.html">Contact
-											Us #1</a></li>
-									<li class="menu-item"><a href="contact-us.html">Contact
-											Us #2</a></li>
-								</ul></li>
+							<li class="menu-item">
+								<a href="index.html">首页</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">一乎百医APP</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">私人医生</a>
+							</li>
+							<li class="menu-item">
+								<a href="${basePath}healthMall">健康商城</a>
+							</li>
+							<li class="menu-item ">
+								<a href="#">新闻动态</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">联系我们</a>
+							</li>
 						</ul>
 					</div>
 
@@ -195,71 +130,7 @@
 								<i class="ps-icon-search"></i>
 							</button>
 						</form>
-						<div class="ps-cart">
-							<a class="ps-cart__toggle" href="#"><span><i>20</i></span><i
-								class="ps-icon-shopping-cart"></i></a>
-							<div class="ps-cart__listing">
-								<div class="ps-cart__content">
-									<div class="ps-cart-item">
-										<a class="ps-cart-item__close" href="#"></a>
-										<div class="ps-cart-item__thumbnail">
-											<a href="product-detail.html"></a><img
-												src="${basePath}mall_resource/images/cart-preview/1.jpg"
-												alt="">
-										</div>
-										<div class="ps-cart-item__content">
-											<a class="ps-cart-item__title" href="product-detail.html">Amazin’
-												Glazin’</a>
-											<p>
-												<span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span>
-											</p>
-										</div>
-									</div>
-									<div class="ps-cart-item">
-										<a class="ps-cart-item__close" href="#"></a>
-										<div class="ps-cart-item__thumbnail">
-											<a href="product-detail.html"></a><img
-												src="${basePath}mall_resource/images/cart-preview/2.jpg"
-												alt="">
-										</div>
-										<div class="ps-cart-item__content">
-											<a class="ps-cart-item__title" href="product-detail.html">The
-												Crusty Croissant</a>
-											<p>
-												<span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span>
-											</p>
-										</div>
-									</div>
-									<div class="ps-cart-item">
-										<a class="ps-cart-item__close" href="#"></a>
-										<div class="ps-cart-item__thumbnail">
-											<a href="product-detail.html"></a><img
-												src="${basePath}mall_resource/images/cart-preview/3.jpg"
-												alt="">
-										</div>
-										<div class="ps-cart-item__content">
-											<a class="ps-cart-item__title" href="product-detail.html">The
-												Rolling Pin</a>
-											<p>
-												<span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="ps-cart__total">
-									<p>
-										Number of items:<span>36</span>
-									</p>
-									<p>
-										Item Total:<span>£528.00</span>
-									</p>
-								</div>
-								<div class="ps-cart__footer">
-									<a class="ps-btn" href="cart.html">Check out<i
-										class="ps-icon-arrow-left"></i></a>
-								</div>
-							</div>
-						</div>
+						
 						<div class="menu-toggle">
 							<span></span>
 						</div>
@@ -315,13 +186,13 @@
 									</td>
 									<td><div class="cart_price">¥${shoppingcart.price }</div></td>
 									<td>
-										<div class="form-group--number">
+										<div class="form-group--number" data-idx=${shoppingcart.idx}>
 											<button class="minus">
-												<span>-</span>
+												<span onclick='jian($(this))'>-</span>
 											</button>
 											<input class="form-control" type="text" value="${shoppingcart.productNum }">
 											<button class="plus">
-												<span>+</span>
+												<span onclick='jia($(this))'>+</span>
 											</button>
 										</div>
 									</td>
@@ -346,7 +217,7 @@
                 </div> -->
               </div>
               <div class="ps-cart__total">
-                <h3>总价: <span> ¥2599.00 </span></h3><a class="ps-btn" href="checkout.html">结算<i class="ps-icon-next"></i></a>
+                <h3>总价: <span id="total_price"> ¥${price}</span></h3><a class="ps-btn" href="${basePath}check-out">结算<i class="ps-icon-next"></i></a>
               </div>
             </div>
           </div>
@@ -487,7 +358,36 @@
 			</div>
 		</div>
 	</main>
-
+<div id="loginModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="form-horizontal">
+                <span class="heading">用户登录</span>
+                <div class="form-group">
+                    <input class="form-control" id="phoNum" placeholder="手机号" value="15316028637">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group help">
+                    <input  class="form-control" id="code" placeholder="验证码" value="4545">
+                    <i class="fa fa-lock"></i>
+                    <button class="fa-btn-code" id="yzm">获取验证码</button>
+                     <!-- 
+                    <a href="#" class="fa fa-question-circle"></a> -->
+                </div>
+                <div class="form-group2 mg_t20">
+                    <button  class="sub" id="login">登录</button>
+                    <button  class="cancel" id="cancel">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+</div>
 	<!-- JS Library-->
 	<script type="text/javascript"
 		src="${basePath}mall_resource/plugins/jquery/dist/jquery.min.js"></script>
@@ -538,10 +438,51 @@
 		src="${basePath}mall_resource/js/main.js"></script>
 	<script type="text/javascript"
 		src="${basePath}layer/layer.js"></script>
+		<script type="text/javascript">
+		var basePath = '${basePath}';
+	</script>
+<script type="text/javascript"
+		src="${basePath}mall_resource/js/login.js"></script>
 	<script type="text/javascript">
-var basePath = '${basePath}';
 var requestPath = '${basePath}' + "admin/";
-	
+function jia(o) {
+	var sz = parseInt($(o).parent().prev().val());
+	/* layer.msg(sz); */
+	$(o).parent().prev().val(sz + 1);
+	var i = $(o).parent().parent().data("idx");
+	var c = $(o).parent().prev().val();
+	getPrice(o,i, c);
+}
+function jian(o) {
+	var sz = parseInt($(o).parent().next().val());
+	if (sz <= 1) {
+		layer.msg("不能再减少了哦",{time:1000});
+	} else {
+		$(o).parent().next().val(sz - 1);
+		var i = $(o).parent().parent().data("idx");
+		var c = $(o).parent().next().val();
+		 getPrice(o,i, c);
+	}
+
+}
+//获取加减金额
+function getPrice(o,idx, count) {
+	$.ajax({
+		dataType : "json",
+		url : basePath + "updateShoppingCartProduct",
+		type : "post",
+		data : {
+			"idx" : idx,
+			"count" : count
+		},
+		error : function(data) {
+		},
+		success : function(data) {
+			$("#total_price").text("¥" + data.price);
+			$(o).parent().parent().parent().next().children().text("¥"+data.selectCartPrice);
+		}
+	});
+}
 		 $('#delete').on('click', function(){
 			 layer.confirm('您是否要从购物车中移除所选的商品？', {
 					btn : [ '确定', '取消' ]
@@ -560,6 +501,7 @@ var requestPath = '${basePath}' + "admin/";
 							var jsonData = data;
 							if (jsonData.result_code == 0) {
 								layer.alert('删除成功！', {icon: 1});
+								location.reload();
 
 							} else {
 								layer.alert('删除失败！', {icon: 2});
@@ -572,71 +514,7 @@ var requestPath = '${basePath}' + "admin/";
 				});
 			  });
 		
-		$("ul#type")
-				.on(
-						"click",
-						"li",
-						function() {
-
-							$("ul#type").each(function() {
-								var y = $(this).children();
-								y.removeClass("current");
-							});
-							$(this).addClass("current");
-							var index = $(this).data('index');
-
-							$(".ps-product__column").remove();
-							$
-									.ajax({
-										dataType : "json",
-										url : basePath + "getProductbySubject",
-										type : "post",
-										data : {
-											"subjectIdx" : index
-										},
-										error : function(data) {
-											alert("加载商品信息失败");
-										},
-										success : function(data) {
-											/*width=\"243。48px\" height=\"216.19px\"  */
-											$
-													.each(
-															data.v_productSubjectList,
-															function(i, item) {
-																$(
-																		"#productlist")
-																		.append(
-																				"<div class=\"ps-product__column\">"
-																						+ "<div class=\"ps-shoe mb-30\">"
-																						+ "<div class=\"ps-shoe__thumbnail\">"
-																						+ "<a class=\"ps-shoe__favorite\" href=\"#\"><i class=\"ps-icon-heart\"></i></a> "
-																						+ "<div class=\"box\">"
-																						+ "<div>"
-																						+ "<img   src=\"https://app.qiwang-sh.com"+item.icon+"\"\">"
-																						+ "</div>"
-																						+ "</div>"
-																						+ "<a class=\"ps-shoe__overlay\" href=\"product-detail.html\"></a>"
-																						+ "</div>"
-																						+ "<div class=\"ps-shoe__content\">"
-																						+ "<div class=\"ps-shoe__detail\">"
-																						+ "<a class=\"ps-shoe__name\"> ￥"
-																						+ item.price
-																						+ "</a>"
-																						+ "<p class=\"ps-shoe__categories\">"
-																						+ "<a>"
-																						+ item.productName
-																						+ "</a>"
-																						+ "</p>"
-																						+
-
-																						"</div>"
-																						+ "</div>"
-																						+ "</div>"
-																						+ "</div>");
-															});
-										}
-									});
-						});
+		
 	</script>
 </body>
 </body>

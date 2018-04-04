@@ -1,0 +1,154 @@
+@CHARSET "UTF-8";
+.t_c{
+	    text-align: center;
+}
+.inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+.online_info_box {
+    border: 1px solid #d5cdda;
+    box-shadow: 0 0 3px #ccc;
+}
+.suc_bg {
+    width: 112px;
+    height: 111px;
+    background: url(http://static3.biyao.com/pc/buy/img/suc_bg.png?v=biyao_0c4a1e9) no-repeat;
+    margin-right: 60px;
+}
+.sop_tip {
+    text-align: center;
+    line-height: 40px;
+    padding: 30px 0;
+}
+.col_523 {
+    color: #523669;
+}
+.f18 {
+    font-size: 18px!important;
+}
+.t_l {
+    text-align: left;
+}
+.f16 {
+    font-size: 16px!important;
+}
+.col_666 {
+    color: #666;
+}
+.lineH24 {
+    line-height: 24px;
+}
+.col_b76 {
+    color: #b768a5;
+}
+.mg_t20 {
+    margin-top: 20px;
+}
+.f12 {
+    font-size: 12px;
+}
+.col_f60 {
+    color: #f49f26;
+}
+.fb {
+    font-weight: 700;
+}
+.mg_l40 {
+    margin-left: 40px;
+}
+.bd_top_e8 {
+    border-top: 1px solid #e8e8e8;
+}
+.pd_t10 {
+    padding-top: 10px!important;
+}
+.bg_fff {
+    background: #fff;
+}
+.pd_l15 {
+    padding-left: 15px;
+}
+.col_523 {
+    color: #523669;
+}
+.paymentTab {
+    height: 29px;
+    line-height: 29px;
+    text-align: center;
+}
+.mg_t15 {
+    margin-top: 15px;
+}
+.paymentTab li.checked {
+    color: #523669;
+}
+.paymentTab li {
+    float: left;
+    padding: 0 20px;
+}
+.f14 {
+    font-size: 14px;
+}
+.pd20 {
+    padding: 20px;
+}
+html .clearfix {
+    display: block;
+}
+.payIconBox label {
+    float: left;
+    margin: 0 27px 20px 0;
+    border: 1px solid #e8e8e8;
+    cursor: pointer;
+    background: #fff;
+}
+.radioIcon {
+    width: 16px;
+    height: 16px;
+    background: url(http://static4.biyao.com/pc/common/img/commonSprite.png?v=biyao_5aacedb) no-repeat 0 -100px;
+}
+.bk20 {
+    background: url(http://static.biyao.com/pc/buy/img/bk20.jpg?v=biyao_6c4b77e) no-repeat;
+    width: 155px;
+    height: 40px;
+}
+.mg_l15 {
+    margin-left: 15px;
+}
+.bk21 {
+    background: url(http://static1.biyao.com/pc/buy/img/bk21.jpg?v=biyao_ef81bb3) no-repeat;
+    width: 155px;
+    height: 40px;
+}
+.checked .radioIcon {
+    background: url(http://static.biyao.com/pc/common/img/commonSprite.png?v=biyao_5aacedb) no-repeat -20px -100px;
+}
+.confirm_120 {
+    background: #8161d1;
+}
+.confirm_120, .back_120 {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+}
+.order_title_n {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.pd_b10 {
+    padding-bottom: 10px!important;
+}
+.relative {
+    position: relative;
+}
+h4 {
+    font-weight: 400;
+    font-size: 12px;
+}
+.payIconBox label.checked {
+    border: 1px solid #8161d1;
+}

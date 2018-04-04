@@ -56,7 +56,7 @@
 .masonry-wrapper .grid-item .grid-item__inner,.setting .grid-item .grid-item__inner
 	{
 	position: relative;
-}
+}s
 
 .masonry-wrapper.ac_masonry-grid .grid-item__content-wrapper,.setting.ac_masonry-grid .grid-item__content-wrapper
 	{
@@ -1492,7 +1492,6 @@ body {
 .ps-list--color li:nth-child(13) a {
 	background-color: #50cf96;
 }
-
 .form-control {
 	outline: none;
 	height: 50px;
@@ -1506,8 +1505,7 @@ body {
 	-moz-border-radius: 0;
 	-ms-border-radius: 0;
 	border-radius: 0;
-	padding: 0 20px;
-}
+	padding: 0 20px; }
 
 .form-control:focus {
 	outline: none;
@@ -8855,7 +8853,7 @@ html .bg--parallax {
 .box {
 	display: flex;
 	justify-content: start;
-	width: 243¡£48px;
+	width: 243ï¿½ï¿½48px;
 	height: 216.19px;
 	flex-wrap: wrap;
 	margin: 20px auto;
@@ -8866,7 +8864,7 @@ html .bg--parallax {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 243¡£48px;
+	width: 243ï¿½ï¿½48px;
 	height: 216.19px;
 	background-color: #fff;
 	margin-bottom: 5px;
