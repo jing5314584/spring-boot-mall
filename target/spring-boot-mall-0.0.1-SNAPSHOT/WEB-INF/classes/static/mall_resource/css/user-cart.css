@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+.ps-subscribe {
+    padding: 35px 0;
+    background-color: #333;
+    margin-top: 200px;
+}
+.test{
+	height: 80px;
+}

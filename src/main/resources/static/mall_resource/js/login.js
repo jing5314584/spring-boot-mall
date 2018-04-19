@@ -4,7 +4,7 @@
 
 $.ajax({
 	dataType : "json",
-	url : basePath + "getShoppingCartCount",
+	url : "getShoppingCartCount",
 	type : "post",
 	data : {
 		
@@ -12,16 +12,19 @@ $.ajax({
 	error : function(data) {
 	},
 	success : function(data) {
-		if(data.result_code == 0){
-			$("#count").text(data.res);
-		}
+			
+		if(data.rspCode == '000000'){
+			$("#cart_count").append("<a class=\"ps-cart__toggle\" href=\"user-cart\"><span><i id=\"count\">"+data.data+"</i></span><i class=\"ps-icon-shopping-cart\"></i></a>");
+    	 }else{
+    		 $("#cart_count").append("<a class=\"ps-cart__toggle\" href=\"user-cart\"><i class=\"ps-icon-shopping-cart\"></i></a>");
+    	 }
 		
 	}
 });
-$("#sigin-out").click(function() {
+function siginOut() {
 			$.ajax({
 				dataType : "json",
-				url : basePath + "sigin-out",
+				url :  "sigin-out",
 				type : "post",
 				data : {
 					
@@ -29,14 +32,14 @@ $("#sigin-out").click(function() {
 				error : function(data) {
 				},
 				success : function(data) {
-					if(data.result_code == 0){
+					if(data.rspCode == '000000'){
 						
 						window.location.reload(true);
 					}
 					
 				}
 			});
-		});
+		};
 		$("#login").click(function(){
 			if($("#phoNum").val().length != 11){
 				layer.msg("手机号码格式不正确", {
@@ -53,7 +56,7 @@ $("#sigin-out").click(function() {
 			
 			$.ajax({
 				dataType : "json",
-				url : basePath + "login",
+				url : "login",
 				type : "post",
 				data : {
 					"userName":$("#phoNum").val(),
@@ -64,14 +67,14 @@ $("#sigin-out").click(function() {
 				success : function(data) {
 					/* popup(data.errorMessage);
 					popup(data.user); */
-					if(data.result_code == 0){
-						$("#loginModal").modal('hide');
-						window.location.reload(true);
-					}else{
-						layer.msg(data.error_string, {
+				if(data.rspCode == '000000'){
+					$("#loginModal").modal('hide');
+					window.location.reload(true);
+		    	 }else{
+		    		 layer.msg(data.rspMsg, {
 							time : 1000
 						});
-					}
+		    	 }
 					
 				}
 			});
@@ -97,7 +100,7 @@ $("#sigin-out").click(function() {
 		function sendCode() {
 			$.ajax({
 				dataType : "json",
-				url : basePath + "sendRegisterCode",
+				url : "sendRegisterCode",
 				type : "post",
 				data : {
 					"phoneNum":$("#phoNum").val(),
@@ -106,7 +109,7 @@ $("#sigin-out").click(function() {
 				error : function(data) {
 				},
 				success : function(data) {
-					layer.msg(data.error_string, {
+					layer.msg(data.rspMsg, {
 						time : 1000
 					});
 				}

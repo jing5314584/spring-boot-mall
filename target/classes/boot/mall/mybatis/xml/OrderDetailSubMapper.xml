@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.mall.mybatis.mapper.OrderDetailSubMapper">
+  <resultMap id="BaseResultMap" type="boot.mall.mybatis.model.OrderDetailSub">
+    <id column="order_idx" jdbcType="INTEGER" property="orderIdx" />
+    <id column="product_idx" jdbcType="INTEGER" property="productIdx" />
+    <result column="user_idx" jdbcType="INTEGER" property="userIdx" />
+    <result column="product_num" jdbcType="INTEGER" property="productNum" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="product_type" jdbcType="INTEGER" property="productType" />
+    <result column="parent_idx" jdbcType="INTEGER" property="parentIdx" />
+    <result column="consignee" jdbcType="VARCHAR" property="consignee" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="invoice_type" jdbcType="INTEGER" property="invoiceType" />
+    <result column="invoice_name" jdbcType="VARCHAR" property="invoiceName" />
+    <result column="shipping_state" jdbcType="INTEGER" property="shippingState" />
+    <result column="shipping_time" jdbcType="TIMESTAMP" property="shippingTime" />
+    <result column="express_no" jdbcType="VARCHAR" property="expressNo" />
+    <result column="express_name" jdbcType="VARCHAR" property="expressName" />
+    <result column="shipping_fee" jdbcType="DECIMAL" property="shippingFee" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    order_idx, product_idx, user_idx, product_num, product_price, product_type, parent_idx, 
+    consignee, address, phone, invoice_type, invoice_name, shipping_state, shipping_time, 
+    express_no, express_name, shipping_fee
+  </sql>
+  <select id="selectByExample" parameterType="boot.mall.mybatis.model.OrderDetailSubExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from rsd_order_detail_sub
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="boot.mall.mybatis.model.OrderDetailSubKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rsd_order_detail_sub
+    where order_idx = #{orderIdx,jdbcType=INTEGER}
+      and product_idx = #{productIdx,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="boot.mall.mybatis.model.OrderDetailSubKey">
+    delete from rsd_order_detail_sub
+    where order_idx = #{orderIdx,jdbcType=INTEGER}
+      and product_idx = #{productIdx,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="boot.mall.mybatis.model.OrderDetailSubExample">
+    delete from rsd_order_detail_sub
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="boot.mall.mybatis.model.OrderDetailSub">
+    insert into rsd_order_detail_sub (order_idx, product_idx, user_idx, 
+      product_num, product_price, product_type, 
+      parent_idx, consignee, address, 
+      phone, invoice_type, invoice_name, 
+      shipping_state, shipping_time, express_no, 
+      express_name, shipping_fee)
+    values (#{orderIdx,jdbcType=INTEGER}, #{productIdx,jdbcType=INTEGER}, #{userIdx,jdbcType=INTEGER}, 
+      #{productNum,jdbcType=INTEGER}, #{productPrice,jdbcType=DECIMAL}, #{productType,jdbcType=INTEGER}, 
+      #{parentIdx,jdbcType=INTEGER}, #{consignee,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{invoiceType,jdbcType=INTEGER}, #{invoiceName,jdbcType=VARCHAR}, 
+      #{shippingState,jdbcType=INTEGER}, #{shippingTime,jdbcType=TIMESTAMP}, #{expressNo,jdbcType=VARCHAR}, 
+      #{expressName,jdbcType=VARCHAR}, #{shippingFee,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="boot.mall.mybatis.model.OrderDetailSub">
+    insert into rsd_order_detail_sub
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderIdx != null">
+        order_idx,
+      </if>
+      <if test="productIdx != null">
+        product_idx,
+      </if>
+      <if test="userIdx != null">
+        user_idx,
+      </if>
+      <if test="productNum != null">
+        product_num,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="productType != null">
+        product_type,
+      </if>
+      <if test="parentIdx != null">
+        parent_idx,
+      </if>
+      <if test="consignee != null">
+        consignee,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="invoiceType != null">
+        invoice_type,
+      </if>
+      <if test="invoiceName != null">
+        invoice_name,
+      </if>
+      <if test="shippingState != null">
+        shipping_state,
+      </if>
+      <if test="shippingTime != null">
+        shipping_time,
+      </if>
+      <if test="expressNo != null">
+        express_no,
+      </if>
+      <if test="expressName != null">
+        express_name,
+      </if>
+      <if test="shippingFee != null">
+        shipping_fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderIdx != null">
+        #{orderIdx,jdbcType=INTEGER},
+      </if>
+      <if test="productIdx != null">
+        #{productIdx,jdbcType=INTEGER},
+      </if>
+      <if test="userIdx != null">
+        #{userIdx,jdbcType=INTEGER},
+      </if>
+      <if test="productNum != null">
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="parentIdx != null">
+        #{parentIdx,jdbcType=INTEGER},
+      </if>
+      <if test="consignee != null">
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType != null">
+        #{invoiceType,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceName != null">
+        #{invoiceName,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingState != null">
+        #{shippingState,jdbcType=INTEGER},
+      </if>
+      <if test="shippingTime != null">
+        #{shippingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expressNo != null">
+        #{expressNo,jdbcType=VARCHAR},
+      </if>
+      <if test="expressName != null">
+        #{expressName,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingFee != null">
+        #{shippingFee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="boot.mall.mybatis.model.OrderDetailSubExample" resultType="java.lang.Integer">
+    select count(*) from rsd_order_detail_sub
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update rsd_order_detail_sub
+    <set>
+      <if test="record.orderIdx != null">
+        order_idx = #{record.orderIdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.productIdx != null">
+        product_idx = #{record.productIdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.userIdx != null">
+        user_idx = #{record.userIdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.productNum != null">
+        product_num = #{record.productNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.productPrice != null">
+        product_price = #{record.productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.productType != null">
+        product_type = #{record.productType,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentIdx != null">
+        parent_idx = #{record.parentIdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.consignee != null">
+        consignee = #{record.consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceType != null">
+        invoice_type = #{record.invoiceType,jdbcType=INTEGER},
+      </if>
+      <if test="record.invoiceName != null">
+        invoice_name = #{record.invoiceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shippingState != null">
+        shipping_state = #{record.shippingState,jdbcType=INTEGER},
+      </if>
+      <if test="record.shippingTime != null">
+        shipping_time = #{record.shippingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.expressNo != null">
+        express_no = #{record.expressNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expressName != null">
+        express_name = #{record.expressName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shippingFee != null">
+        shipping_fee = #{record.shippingFee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update rsd_order_detail_sub
+    set order_idx = #{record.orderIdx,jdbcType=INTEGER},
+      product_idx = #{record.productIdx,jdbcType=INTEGER},
+      user_idx = #{record.userIdx,jdbcType=INTEGER},
+      product_num = #{record.productNum,jdbcType=INTEGER},
+      product_price = #{record.productPrice,jdbcType=DECIMAL},
+      product_type = #{record.productType,jdbcType=INTEGER},
+      parent_idx = #{record.parentIdx,jdbcType=INTEGER},
+      consignee = #{record.consignee,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      invoice_type = #{record.invoiceType,jdbcType=INTEGER},
+      invoice_name = #{record.invoiceName,jdbcType=VARCHAR},
+      shipping_state = #{record.shippingState,jdbcType=INTEGER},
+      shipping_time = #{record.shippingTime,jdbcType=TIMESTAMP},
+      express_no = #{record.expressNo,jdbcType=VARCHAR},
+      express_name = #{record.expressName,jdbcType=VARCHAR},
+      shipping_fee = #{record.shippingFee,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="boot.mall.mybatis.model.OrderDetailSub">
+    update rsd_order_detail_sub
+    <set>
+      <if test="userIdx != null">
+        user_idx = #{userIdx,jdbcType=INTEGER},
+      </if>
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productType != null">
+        product_type = #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="parentIdx != null">
+        parent_idx = #{parentIdx,jdbcType=INTEGER},
+      </if>
+      <if test="consignee != null">
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType != null">
+        invoice_type = #{invoiceType,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceName != null">
+        invoice_name = #{invoiceName,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingState != null">
+        shipping_state = #{shippingState,jdbcType=INTEGER},
+      </if>
+      <if test="shippingTime != null">
+        shipping_time = #{shippingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expressNo != null">
+        express_no = #{expressNo,jdbcType=VARCHAR},
+      </if>
+      <if test="expressName != null">
+        express_name = #{expressName,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingFee != null">
+        shipping_fee = #{shippingFee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where order_idx = #{orderIdx,jdbcType=INTEGER}
+      and product_idx = #{productIdx,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="boot.mall.mybatis.model.OrderDetailSub">
+    update rsd_order_detail_sub
+    set user_idx = #{userIdx,jdbcType=INTEGER},
+      product_num = #{productNum,jdbcType=INTEGER},
+      product_price = #{productPrice,jdbcType=DECIMAL},
+      product_type = #{productType,jdbcType=INTEGER},
+      parent_idx = #{parentIdx,jdbcType=INTEGER},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      invoice_type = #{invoiceType,jdbcType=INTEGER},
+      invoice_name = #{invoiceName,jdbcType=VARCHAR},
+      shipping_state = #{shippingState,jdbcType=INTEGER},
+      shipping_time = #{shippingTime,jdbcType=TIMESTAMP},
+      express_no = #{expressNo,jdbcType=VARCHAR},
+      express_name = #{expressName,jdbcType=VARCHAR},
+      shipping_fee = #{shippingFee,jdbcType=DECIMAL}
+    where order_idx = #{orderIdx,jdbcType=INTEGER}
+      and product_idx = #{productIdx,jdbcType=INTEGER}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="boot.mall.mybatis.model.OrderDetailSubExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from rsd_order_detail_sub
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

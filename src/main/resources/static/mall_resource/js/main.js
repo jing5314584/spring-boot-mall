@@ -353,9 +353,9 @@
         shoe.on('mouseenter', function() {
             var variants = $(this).find('.ps-shoe__variant');
             if (variants.children().length === 0) {
-                setTimeout(function() {
+                /*setTimeout(function() {
                     $.ajax({
-                        url: "../js/shoe-variants.js",
+                        url: "mall_resource/js/shoe-variants.js",
                         success: function(data) {
                             var images = JSON.parse(data);
                             for (var i in images) {
@@ -392,7 +392,7 @@
                             });
                         }
                     });
-                }, 0);
+                }, 0);*/
 
             }
             else {
@@ -705,5 +705,12 @@
     });
 
 })(jQuery);
+
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
 
 //# sourceMappingURL=main.js.map

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.mall.mybatis.mapper.OrderDetailMapper">
+  <resultMap id="BaseResultMap" type="boot.mall.mybatis.model.OrderDetail">
+    <id column="idx" jdbcType="INTEGER" property="idx" />
+    <result column="order_idx" jdbcType="INTEGER" property="orderIdx" />
+    <result column="product_idx" jdbcType="INTEGER" property="productIdx" />
+    <result column="price_idx" jdbcType="INTEGER" property="priceIdx" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    idx, order_idx, product_idx, price_idx
+  </sql>
+  <select id="selectByExample" parameterType="boot.mall.mybatis.model.OrderDetailExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from rsd_order_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rsd_order_detail
+    where idx = #{idx,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rsd_order_detail
+    where idx = #{idx,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="boot.mall.mybatis.model.OrderDetailExample">
+    delete from rsd_order_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="boot.mall.mybatis.model.OrderDetail">
+    insert into rsd_order_detail (idx, order_idx, product_idx, 
+      price_idx)
+    values (#{idx,jdbcType=INTEGER}, #{orderIdx,jdbcType=INTEGER}, #{productIdx,jdbcType=INTEGER}, 
+      #{priceIdx,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="boot.mall.mybatis.model.OrderDetail">
+    insert into rsd_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idx != null">
+        idx,
+      </if>
+      <if test="orderIdx != null">
+        order_idx,
+      </if>
+      <if test="productIdx != null">
+        product_idx,
+      </if>
+      <if test="priceIdx != null">
+        price_idx,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idx != null">
+        #{idx,jdbcType=INTEGER},
+      </if>
+      <if test="orderIdx != null">
+        #{orderIdx,jdbcType=INTEGER},
+      </if>
+      <if test="productIdx != null">
+        #{productIdx,jdbcType=INTEGER},
+      </if>
+      <if test="priceIdx != null">
+        #{priceIdx,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="boot.mall.mybatis.model.OrderDetailExample" resultType="java.lang.Integer">
+    select count(*) from rsd_order_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update rsd_order_detail
+    <set>
+      <if test="record.idx != null">
+        idx = #{record.idx,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderIdx != null">
+        order_idx = #{record.orderIdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.productIdx != null">
+        product_idx = #{record.productIdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.priceIdx != null">
+        price_idx = #{record.priceIdx,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update rsd_order_detail
+    set idx = #{record.idx,jdbcType=INTEGER},
+      order_idx = #{record.orderIdx,jdbcType=INTEGER},
+      product_idx = #{record.productIdx,jdbcType=INTEGER},
+      price_idx = #{record.priceIdx,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="boot.mall.mybatis.model.OrderDetail">
+    update rsd_order_detail
+    <set>
+      <if test="orderIdx != null">
+        order_idx = #{orderIdx,jdbcType=INTEGER},
+      </if>
+      <if test="productIdx != null">
+        product_idx = #{productIdx,jdbcType=INTEGER},
+      </if>
+      <if test="priceIdx != null">
+        price_idx = #{priceIdx,jdbcType=INTEGER},
+      </if>
+    </set>
+    where idx = #{idx,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="boot.mall.mybatis.model.OrderDetail">
+    update rsd_order_detail
+    set order_idx = #{orderIdx,jdbcType=INTEGER},
+      product_idx = #{productIdx,jdbcType=INTEGER},
+      price_idx = #{priceIdx,jdbcType=INTEGER}
+    where idx = #{idx,jdbcType=INTEGER}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="boot.mall.mybatis.model.OrderDetailExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from rsd_order_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

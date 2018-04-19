@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.mall.mybatis.mapper.ReceiveAddressMapper">
+  <resultMap id="BaseResultMap" type="boot.mall.mybatis.model.ReceiveAddress">
+    <id column="idx" jdbcType="INTEGER" property="idx" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="user_idx" jdbcType="INTEGER" property="userIdx" />
+    <result column="order_idx" jdbcType="INTEGER" property="orderIdx" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="receive_address_province" jdbcType="VARCHAR" property="receiveAddressProvince" />
+    <result column="receive_address_city" jdbcType="VARCHAR" property="receiveAddressCity" />
+    <result column="receive_address_area" jdbcType="VARCHAR" property="receiveAddressArea" />
+    <result column="receive_address_detail" jdbcType="VARCHAR" property="receiveAddressDetail" />
+    <result column="receive" jdbcType="VARCHAR" property="receive" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    idx, create_time, user_idx, order_idx, phone, receive_address_province, receive_address_city, 
+    receive_address_area, receive_address_detail, receive
+  </sql>
+  <select id="selectByExample" parameterType="boot.mall.mybatis.model.ReceiveAddressExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from rsd_receive_address
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rsd_receive_address
+    where idx = #{idx,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rsd_receive_address
+    where idx = #{idx,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="boot.mall.mybatis.model.ReceiveAddressExample">
+    delete from rsd_receive_address
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="boot.mall.mybatis.model.ReceiveAddress">
+    <selectKey keyProperty="idx" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into rsd_receive_address (create_time, user_idx, order_idx, 
+      phone, receive_address_province, receive_address_city, 
+      receive_address_area, receive_address_detail, 
+      receive)
+    values (#{createTime,jdbcType=TIMESTAMP}, #{userIdx,jdbcType=INTEGER}, #{orderIdx,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{receiveAddressProvince,jdbcType=VARCHAR}, #{receiveAddressCity,jdbcType=VARCHAR}, 
+      #{receiveAddressArea,jdbcType=VARCHAR}, #{receiveAddressDetail,jdbcType=VARCHAR}, 
+      #{receive,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="boot.mall.mybatis.model.ReceiveAddress">
+    <selectKey keyProperty="idx" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into rsd_receive_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="userIdx != null">
+        user_idx,
+      </if>
+      <if test="orderIdx != null">
+        order_idx,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="receiveAddressProvince != null">
+        receive_address_province,
+      </if>
+      <if test="receiveAddressCity != null">
+        receive_address_city,
+      </if>
+      <if test="receiveAddressArea != null">
+        receive_address_area,
+      </if>
+      <if test="receiveAddressDetail != null">
+        receive_address_detail,
+      </if>
+      <if test="receive != null">
+        receive,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIdx != null">
+        #{userIdx,jdbcType=INTEGER},
+      </if>
+      <if test="orderIdx != null">
+        #{orderIdx,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddressProvince != null">
+        #{receiveAddressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddressCity != null">
+        #{receiveAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddressArea != null">
+        #{receiveAddressArea,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddressDetail != null">
+        #{receiveAddressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="receive != null">
+        #{receive,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="boot.mall.mybatis.model.ReceiveAddressExample" resultType="java.lang.Integer">
+    select count(*) from rsd_receive_address
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update rsd_receive_address
+    <set>
+      <if test="record.idx != null">
+        idx = #{record.idx,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userIdx != null">
+        user_idx = #{record.userIdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderIdx != null">
+        order_idx = #{record.orderIdx,jdbcType=INTEGER},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveAddressProvince != null">
+        receive_address_province = #{record.receiveAddressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveAddressCity != null">
+        receive_address_city = #{record.receiveAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveAddressArea != null">
+        receive_address_area = #{record.receiveAddressArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveAddressDetail != null">
+        receive_address_detail = #{record.receiveAddressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receive != null">
+        receive = #{record.receive,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update rsd_receive_address
+    set idx = #{record.idx,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      user_idx = #{record.userIdx,jdbcType=INTEGER},
+      order_idx = #{record.orderIdx,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      receive_address_province = #{record.receiveAddressProvince,jdbcType=VARCHAR},
+      receive_address_city = #{record.receiveAddressCity,jdbcType=VARCHAR},
+      receive_address_area = #{record.receiveAddressArea,jdbcType=VARCHAR},
+      receive_address_detail = #{record.receiveAddressDetail,jdbcType=VARCHAR},
+      receive = #{record.receive,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="boot.mall.mybatis.model.ReceiveAddress">
+    update rsd_receive_address
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIdx != null">
+        user_idx = #{userIdx,jdbcType=INTEGER},
+      </if>
+      <if test="orderIdx != null">
+        order_idx = #{orderIdx,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddressProvince != null">
+        receive_address_province = #{receiveAddressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddressCity != null">
+        receive_address_city = #{receiveAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddressArea != null">
+        receive_address_area = #{receiveAddressArea,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddressDetail != null">
+        receive_address_detail = #{receiveAddressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="receive != null">
+        receive = #{receive,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idx = #{idx,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="boot.mall.mybatis.model.ReceiveAddress">
+    update rsd_receive_address
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      user_idx = #{userIdx,jdbcType=INTEGER},
+      order_idx = #{orderIdx,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      receive_address_province = #{receiveAddressProvince,jdbcType=VARCHAR},
+      receive_address_city = #{receiveAddressCity,jdbcType=VARCHAR},
+      receive_address_area = #{receiveAddressArea,jdbcType=VARCHAR},
+      receive_address_detail = #{receiveAddressDetail,jdbcType=VARCHAR},
+      receive = #{receive,jdbcType=VARCHAR}
+    where idx = #{idx,jdbcType=INTEGER}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="boot.mall.mybatis.model.ReceiveAddressExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from rsd_receive_address
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,391 @@
+@CHARSET "UTF-8";
+
+.nTitle {
+	height: 32px;
+	border-bottom: 1px solid #d5cdda;
+	font-size: 16px;
+	color: #8161d1;
+	margin-left: 40px;
+	margin-right:40px;
+}
+
+.detailed_address_list {
+	margin-left: 25px
+}
+
+.detailed_address_list li {
+	float: left;
+	margin-left: 25px;
+	cursor: pointer;
+	margin-top: 20px;
+	border: 1px solid #bcb8bf;
+	width: 255px;
+	height: 170px;
+	display: inline;
+	padding: 0 12px;
+	position: relative
+}
+
+.detailed_address_list li.checked {
+	background: #f5f5f5;
+	border: 1px solid #724a88
+}
+
+.detailed_address_list li.checked .col_666 {
+	color: #523669
+}
+
+.detailed_address_list li:hover {
+	background: #fff;
+	border: 1px solid #724a88
+}
+
+.detailed_address_list li.checked .default_addres {
+	display: block
+}
+
+.detailed_address_list li.checked .edit_btn_box {
+	display: block
+}
+
+.detailed_address_list li:hover .default_addres {
+	display: block
+}
+
+.detailed_address_list li:hover .edit_btn_box {
+	display: block
+}
+
+.contact_box {
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+}
+
+.contact_box span {
+	max-width: 155px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.f14{
+	font-size:14px;
+}
+.mg_t15{
+	 margin-top: 15px;
+}
+.mg_t10{
+	 margin-top: 10px;
+}
+.mg_t40 {
+    margin-top: 40px;
+}
+.mg_t20 {
+    margin-top: 20px;
+}
+.col_666 {
+    color: #666
+}
+.w250 {
+    width: 250px
+}
+.escp {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+.f12 {
+    font-size: 12px
+}
+.f18 {
+    font-size: 18px!important;
+}
+}
+.lineH20 {
+    line-height: 20px !important
+}
+.default_addres {
+    position: absolute;
+    left: 13px;
+    bottom: 10px;
+    display: none
+}
+.default_addres i {
+    background-position: -432px -94px;
+    width: 14px;
+    height: 15px;
+}
+.edit_btn_box {
+    position: absolute;
+    right: 13px;
+    bottom: 10px;
+    display: none
+}
+.inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+.spIcon {
+    background: url(http://static2.biyao.com/pc/www/img/sprit_biyao.png?v=biyao_653b0c0) no-repeat;
+}
+.set_def {
+    color: rgb(153, 153, 153);
+    background-color: transparent;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    font: 12px/1.5em "Microsoft YaHei", 微软雅黑, 宋体, Arial, Helvetica, sans-serif;
+}
+.add_address_box {
+    display: block;
+    text-align: center;
+}
+.add_address_bg {
+    width: 52px;
+    height: 52px;
+    background-position: -218px -109px;
+}
+.sop_table1 {
+    width: 100%;
+    line-height: 20px;
+    margin-left:40px;
+    padding-right:40px;
+}
+table {
+    font: 12px "Microsoft YaHei","微软雅黑","宋体",Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #333;
+}
+html .clearfix {
+    display: block;
+}
+.sop_table1 th {
+    font-size: 12px;
+    font-weight: 400;
+    height: 37px;
+}
+.bg_fff {
+    background: #fff;
+}
+.sop_table1 td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.col_999 {
+    color: #999!important;
+}
+.col_666 {
+    color: #666;
+}
+.sop_table1 strong {
+    font-weight: 400;
+}
+.mg_r20 {
+    margin-right: 20px;
+}
+.bg_fff {
+    background: #fff;
+}
+.mg_t30 {
+    margin-top: 30px;
+}
+.relative {
+    position: relative;
+}
+.border {
+    border: 1px solid #e8e8e8;
+}
+.experience_entrance {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.lineH30 {
+    line-height: 30px;
+}
+.pd_r20 {
+    padding-right: 20px;
+}
+.pd_l10 {
+    padding-left: 10px;
+}
+.pd_r5 {
+    padding-right: 5px;
+}
+.w80 {
+    width: 80px;
+}
+.t_r {
+    text-align: right!important;
+}
+.col_f60 {
+    color: #f49f26;
+}
+.f_r {
+    float: right;
+}
+.fb {
+    font-weight: 700;
+}
+.mg_r30 {
+    margin-right: 30px;
+}
+.f_z{
+	font: 12px,"Microsoft YaHei", 微软雅黑, 宋体, Arial, Helvetica, sans-serif;
+}
+.back_pay_btn {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #ccc;
+    background: #fff;
+    text-align: center;
+}
+.order_qr_btn {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    background: #f49f26;
+}
+.t_c {
+    text-align: center;
+}
+.pd_t10 {
+    padding-top: 10px!important;
+}
+.mg_b20 {
+    margin-bottom: 20px;
+}
+.mg_l40 {
+    margin-left: 40px;
+}
+.mg_r40 {
+    margin-right: 40px;
+}
+.per_table {
+    line-height: 30px;
+}
+table {
+    color: rgb(51, 51, 51);
+    font: 12px "Microsoft YaHei", 微软雅黑, 宋体, Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+.col_ee5b47 {
+    color: #ee5b47;
+}
+.permy {
+    float: left;
+}
+.inpCom {
+    border: 1px solid #ccc;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 4px;
+    background-color: #fff;
+    color: #523669;
+    margin-top:10px;
+}
+.w200 {
+    width: 200px;
+}
+input, textarea {
+    outline: 0;
+}
+.permy {
+    float: left;
+}
+.posR {
+    position: relative;
+    z-index: 100;
+}
+.mg_r10 {
+    margin-right: 10px;
+}
+.w120 {
+    width: 120px;
+}
+.J_select {
+    color: #999;
+    width: 100%;
+}
+.J_select div.sel_div {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    display: none;
+}
+.J_select ul.sel_ul {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-width: 0 1px;
+    position: relative;
+}
+.J_select ul li {
+    padding-left: 5px;
+    color: #333;
+    cursor: pointer;
+    line-height: 22px;
+}
+.form-inline .form-group {
+    display: inline-block;
+     margin-top: 20px;
+    margin-bottom: 20px;
+    vertical-align: middle;
+}
+.form-inline .form-control {
+    display: inline-block;
+    width: 140px;
+    vertical-align: middle;
+}
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #fff;
+}
+.send_address{
+	font-weight: 400;
+    font-size: 12px;
+    background-color: #8161d1;
+    border-radius: 3px;
+     height: 28px;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 28px;
+    padding:3px,5px,3px,5px;
+}
+.form-select {
+	outline: none;
+	height: 30px;
+	width: 140px;
+	border:1px solid #ccc;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	box-shadow: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	border-radius: 0;
+	padding: 0 20px;
+}
+.form-select:focus {
+	outline: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	box-shadow: none;
+	border-color: #ccc;
+}

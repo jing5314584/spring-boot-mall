@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 
 
 
+
+
 /*import org.apache.axiom.om.OMAbstractFactory;
  import org.apache.axiom.om.OMElement;
  import org.apache.axiom.om.OMFactory;
@@ -26,10 +28,13 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import boot.mall.constants.Common;
 import boot.mall.constants.Common.EnumSmsType;
+import boot.mall.controller.result.ExceptionMsg;
+import boot.mall.controller.result.ResponseData;
 import boot.mall.mybatis.mapper.SmsValidateMapper;
 import boot.mall.mybatis.model.SmsValidate;
 
@@ -38,7 +43,7 @@ import com.alibaba.fastjson.JSONException;
 import com.cloopen.rest.sdk.CCPRestSDK;
 
 
-@Controller
+@RestController
 public class SmsManager {
 	@Autowired
 	private SmsValidateMapper smsValidateMapper;
@@ -46,27 +51,27 @@ public class SmsManager {
 	private static Logger logger = Logger.getLogger(SmsManager.class);
 
 	@RequestMapping(value = "sendRegisterCode")
-	public ModelAndView sendRegisterCode(HttpSession session,
+	public ResponseData sendRegisterCode(HttpSession session,
 			HttpServletRequest request, HttpServletResponse respnose){
 		logger.info("sendRegisterCode Handler ,Parameter="
 				+ JSON.toJSONString(request.getParameterMap()));
-		int resultCode = 0;// 0成功，1已注册的手机, 2非法的手机号码， 3今天的短信数量到达上限, 4发送间隔要超过60S
+		String resultCode = "000000";// 0成功，1已注册的手机, 2非法的手机号码， 3今天的短信数量到达上限, 4发送间隔要超过60S
 		String smsCode = "";
 		String message="发送成功";
 		String userAgent=request.getHeader("user-agent"); 
 		if (request.getParameter("user_agent") != null) {
 			String user_agent = request.getParameter("user_agent");
 			if (!user_agent.equals("7bf073e716a7e5e67b35ed4989e728b74281ae75b2f176bfc24ee1a344e698a0")) {
-				resultCode = -1;
+				resultCode = "000001";;
 				message = "非法地址访问，已经被风控拦截，如有疑问请联系企业客服！";
-				return new ModelAndView("message", Common.GetResponsePost(null, message, resultCode));
+				return new ResponseData(resultCode, message);
 			}
 		}
 
 		String phoneNum = request.getParameter("phoneNum");
 
 		if (phoneNum == null || !Common.isPhoneNum(phoneNum)) {
-			resultCode = 2;
+			resultCode = "000001";
 			message="非法的手机号";
 			
 		} else{
@@ -81,7 +86,7 @@ public class SmsManager {
 				if (!canSend) {// 发送过验证码
 					if (new Date().getTime()
 							- smsValidate.getSendDate().getTime() < 1 * 60 * 1000) {
-						resultCode = 4;// 发送间隔要超过60S
+						resultCode = "000001";// 发送间隔要超过60S
 						message="发送间隔要超过60秒";
 						
 					} else if (smsValidate.getSendCount() < Common.SMS_MAX_COUNT
@@ -90,7 +95,7 @@ public class SmsManager {
 						canSend = true;
 					} else {
 						message="今天的短信数量到达上限";
-						resultCode = 3; // 今天的短信数量到达上限
+						resultCode = "000001";
 						
 					}
 				}
@@ -102,15 +107,14 @@ public class SmsManager {
 							phoneNum, smsCode, "10");
 
 					if (isOK == null || isOK.equals("fail")) {
-						resultCode = 5;
+						resultCode = "000001";
 						message  = "获取验证码失败,请重试!";
 						
 					}
 				}
 			
 		}
-		logger.info("结果："+Common.GetResponsePost(null, message, resultCode).toString());
-		return new ModelAndView("message", Common.GetResponsePost(null, message, resultCode));
+		return new ResponseData(resultCode, message);
 	}
 
 	

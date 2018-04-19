@@ -1,6 +1,6 @@
 package boot.mall.config;
 
-import org.springframework.amqp.core.Queue;
+/*import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,4 +12,4 @@ public class RabbitConfig {
         return new Queue("hello");
     }
 
-}
+}*/
