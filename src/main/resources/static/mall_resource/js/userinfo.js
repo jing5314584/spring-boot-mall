@@ -21,7 +21,7 @@ $.ajax({
 					"</div>");
 		}else{
 			$("#heads").append(
-					"<a style=\"cursor:pointer\" data-toggle=\"modal\" data-target=\"#loginModal\"><i class=\"fa fa-sign-in fa-2x color_8161d1 mg_t10 mg_r10\"></i>"+
+					"<a style=\"cursor:pointer\" onclick=\"userLogin();\"><i class=\"fa fa-sign-in fa-2x color_8161d1 mg_t10 mg_r10\"></i>"+
 					"登陆</a>"		
 			);
 		}

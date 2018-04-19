@@ -44,13 +44,8 @@
 <!-- Custom-->
 <link rel="stylesheet" href="mall_resource/css/style.css">
 <link rel="stylesheet" href="mall_resource/css/login.css">
-<!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
-<!--WARNING: Respond.js doesn't work if you view the page via file://-->
-<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+<link rel="stylesheet" href="mall_resource/css/common.css">
 </head>
-<!--[if IE 7]><body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
-<!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
-<!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
 <body class="ps-loading">
 	<div class="header--sidebar"></div>
 	<header class="header">
@@ -156,7 +151,7 @@
 												Studio</a></span> -<span class="ml-5">Jun 10, 2017</span> -->
 												<span>时间：2016-05-15</span>
 									</p>
-                      </header>
+                      
                       <div class="ps-post__content">
                         <p>2016年5月14日，“一乎之间，百医相伴——泰然全国医疗专家问诊活动”上海站在上海斯格威铂尔曼大酒店举行，本站邀请到的两位医生分别是上海中医药大学附属曙光医院中医科主任医师余安胜，以及上海交通大学医学院附属仁济医院心内科主任医师江立生。作为"泰然金融"与战略合作伙伴"一乎百医"携手开展的系列活动，给予现场客户专业的咨询和切实的体验是活动举办的初衷和定位。因此在中医演讲部分，医生着...</p>
                       </div>
@@ -238,32 +233,36 @@
 			</div>
 		</div>
 	</main>
-	<div id="loginModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-offset-2 col-md-8">
-							<div class="form-horizontal">
-								<span class="heading">用户登录</span>
-								<div class="form-group">
-									<input class="form-control" id="phoNum" placeholder="手机号"
-										value="15316028637"> <i class="fa fa-user"></i>
-								</div>
-								<div class="form-group help">
-									<input class="form-control" id="code" placeholder="验证码"
-										value="4545"> <i class="fa fa-lock"></i>
-									<button class="fa-btn-code" id="yzm">获取验证码</button>
-									<!-- 
-                    <a href="#" class="fa fa-question-circle"></a> -->
-								</div>
-								<div class="form-group2 mg_t20">
-									<button class="sub" id="login">登录</button>
-									<button class="cancel" id="cancel">取消</button>
-								</div>
-							</div>
-						</div>
-					</div>
+<div class="mod-login mod-login-show" style="display: none;" id="loginmod">
+		<div class="mask"></div>
+		<div class="dialog">
+			
+			<div class="panel reg" style="display: block;">
+				<div class="hd">
+					<span>立即登录</span>
+					<a class="close" href="javascript:;"></a>
+				</div>
+				<div class="bd">
+					
+						<p ></p>
+						<p>
+							<span class="icon icon-phone">
+								<input class="input-text" type="number" name="username" id="phoNum"
+									placeholder="常用的手机号码" autocomplete="off" maxlength="11">
+							</span>
+						</p>
+						<p>
+							<span class="icon icon-captcha">
+								<input class="input-text" type="number" name="code" id="code"
+									placeholder="输入接收到的验证码" autocomplete="off" maxlength="4"
+									data-form-un="1524121550626.6824">
+							</span>
+							<input type="button" class="getcode" value="发送验证码"  onclick="getMessage(this)">
+						</p>
+						<p class="login_index">
+							<input class="input-submit" type="submit" value="立即登录" id="login"
+								data-form-sbm="1524121550626.6824" style="pointer-events: auto;">
+						</p>
 				</div>
 			</div>
 		</div>

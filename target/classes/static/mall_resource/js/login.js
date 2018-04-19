@@ -21,6 +21,19 @@ $.ajax({
 		
 	}
 });
+function userLogin() {
+	var md = document.getElementById("loginmod");
+	md.style.display="block";
+}
+$(".close").click(function(){
+	var md = document.getElementById("loginmod");
+	md.style.display="none";
+});
+
+
+
+
+
 function siginOut() {
 			$.ajax({
 				dataType : "json",
@@ -68,7 +81,6 @@ function siginOut() {
 					/* popup(data.errorMessage);
 					popup(data.user); */
 				if(data.rspCode == '000000'){
-					$("#loginModal").modal('hide');
 					window.location.reload(true);
 		    	 }else{
 		    		 layer.msg(data.rspMsg, {
@@ -80,23 +92,38 @@ function siginOut() {
 			});
 			
 		});
-		$("#cancel").click(function(){
-			$("#loginModal").modal('hide');
-		});
-		$("#yzm").click(function(){
+
+		var countdown=60;
+		function getMessage(obj){
+			
 			if($("#phoNum").val().length != 11){
 				layer.msg("手机号码格式不正确", {
 					time : 1000
 				});
 				return;
 			}
+			var phoNum = document.getElementById("phoNum"); 
+			phoNum.setAttribute("disabled",false); /*
+			$("#phoNum").attr("disabled",false);*/
 			sendCode();
-			$("#yzm").attr('disabled',true); 
-			var num=60;
-			num = count_down(num);
-			timeId3=window.setTimeout("count_down("+num+")",1000);
-			
-		});
+		    settime(obj);
+		}
+		
+		function settime(obj) {
+	        if (countdown == 0) {
+	        	obj.removeAttribute("disabled");
+	        	obj.value="发送验证码";
+	            countdown = 60;
+	            return;
+	        } else {
+	            $(obj).attr("disabled",true);
+	            obj.value="重新发送(" + countdown + ")";
+	            countdown--;
+	        }
+	        setTimeout(function() {
+	                    settime(obj) }
+	                ,1000)
+	    }
 		function sendCode() {
 			$.ajax({
 				dataType : "json",
@@ -116,17 +143,4 @@ function siginOut() {
 			});
 		}
 		//验证码倒计时
-		function count_down(num){
-			if(num>0){
-				num -= 1;
-				$("#yzm").text(num+"s");
-				timeId3=window.setTimeout("count_down("+num+")",1000);
-				return num;
-			}else{
-				window.clearTimeout(timeId3);
-				$("#yzm").attr('disabled',false);
-				$("#yzm").text("获取验证码");
-				return 60;
-			}
-			
-		}
+		
